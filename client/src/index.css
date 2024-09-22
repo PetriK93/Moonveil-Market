@@ -1,3 +1,12 @@
 * {
-  box-sizing: border-box;
+  background-color: #f5f5dc;
+  color: rgba(119, 54, 54, 0.878);
+  font-family: "Elementary Gothic Bookhand";
+}
+
+@font-face {
+  font-family: "Elementary Gothic Bookhand";
+  src: url("./assets/fonts/Elementary_Gothic_Bookhand.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }

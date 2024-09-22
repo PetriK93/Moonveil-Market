@@ -1,0 +1,88 @@
+.container {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+img {
+  width: 300px;
+  height: auto;
+  max-width: 496px;
+  margin-top: 0px;
+  height: auto;
+}
+
+.imageWrapper {
+  position: relative; /* Position relative to allow absolute positioning */
+  display: inline-block; /* Ensure it only takes up the space of the image */
+}
+
+.imageWrapper::after {
+  content: "";
+  position: absolute;
+  margin-bottom: -6px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background-color: rgba(119, 54, 54, 0.877);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+
+.imageWrapper:hover::after {
+  transform: scaleX(1);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-left: 160px;
+}
+
+li {
+  position: relative;
+  margin: 0 1rem;
+  margin-top: 38px;
+  margin-bottom: 50px;
+}
+
+li::after {
+  content: "";
+  position: absolute;
+  margin-bottom: -6px;
+  left: 0;
+  right: 0;
+  bottom: -50px;
+  height: 2px;
+  background-color: rgba(119, 54, 54, 0.877);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+
+li:hover::after {
+  transform: scaleX(1);
+}
+
+a {
+  color: linear-gradient(90deg, rgba(138, 43, 226, 1), rgba(75, 0, 130, 1));
+  text-decoration: none;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: lightgrey;
+  width: 100vw;
+  margin-top: 5px;
+}
