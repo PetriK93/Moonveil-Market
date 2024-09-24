@@ -1,7 +1,14 @@
+:root {
+  --background-color: #f5f5dc;
+  --brown-color: rgba(119, 54, 54, 0.878);
+  --light-brown-color: rgb(235, 220, 185);
+}
+
 * {
-  background-color: #f5f5dc;
-  color: rgba(119, 54, 54, 0.878);
+  background-color: var(--background-color);
+  color: var(--brown-color);
   font-family: "Elementary Gothic Bookhand";
+  letter-spacing: 0.5px;
 }
 
 @font-face {

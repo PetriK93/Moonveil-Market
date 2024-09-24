@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--background-color);
+  color: var(--brown-color);
+  width: 100vw;
+  height: auto;
+  position: relative;
+  margin-top: 10px;
+}
+
+input {
+  width: 800px;
+  height: 40px;
+  border: 2px solid lightgrey;
+  color: var(--brown-color);
+  border-radius: 5px;
+  background-color: var(--background-color);
+  padding-left: 10px;
+  font-size: 1.2rem;
+}
+
+input:focus {
+  outline: none;
+  border: 2px solid var(--brown-color);
+}
+
+.inputIcon {
+  position: relative;
+  right: -380px;
+  top: -23px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
