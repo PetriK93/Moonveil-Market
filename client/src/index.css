@@ -11,6 +11,12 @@
   letter-spacing: 0.5px;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 h1 {
   position: relative;
   padding-bottom: 0px;

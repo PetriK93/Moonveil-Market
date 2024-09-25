@@ -8,8 +8,8 @@
 }
 
 .categoryContainer {
-  width: 835px;
-  height: 480px;
+  width: 836px;
+  height: 500px;
   display: flex;
   flex-direction: row;
   gap: 14px;
