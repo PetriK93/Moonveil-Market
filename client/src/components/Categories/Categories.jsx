@@ -36,7 +36,6 @@ const CategoryList = () => {
               alt={category.name}
               className={styles.categoryImage}
             />
-
             <h3 className={styles.categoryName}>{category.name}</h3>
           </div>
         ))}

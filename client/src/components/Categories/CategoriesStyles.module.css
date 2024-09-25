@@ -7,52 +7,37 @@
   margin-top: -20px;
 }
 
-h1 {
-  margin-bottom: 20px;
-}
-
 .categoryContainer {
-  width: 800px;
-  height: 470px;
+  width: 835px;
+  height: 480px;
   display: flex;
   flex-direction: row;
+  gap: 14px;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   border: 2px solid var(--brown-color);
   background-color: var(--light-brown-color);
+  border-radius: 5px;
 }
 
 .categoryItem {
-  margin: 10px;
+  margin: 13px 10px 7px 13px;
   text-align: center;
   background-color: var(--light-brown-color);
+  transition: transform 0.3s ease;
+}
+
+.categoryItem:hover {
+  transform: scale(1.1);
 }
 
 .categoryImage {
-  width: 128px;
+  width: 116px;
   height: auto;
   background-color: var(--light-brown-color);
 }
 
 h3 {
-  position: relative;
   background-color: var(--light-brown-color);
-}
-
-h3::after {
-  content: "";
-  position: absolute;
-  margin-bottom: -3px;
-  left: 0;
-  right: 0;
-  bottom: 0px;
-  height: 2px;
-  background-color: var(--brown-color);
-  transform: scaleX(0);
-  transition: transform 0.3s;
-}
-
-h3:hover::after {
-  transform: scaleX(1);
 }
