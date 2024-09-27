@@ -13,11 +13,13 @@
 input {
   width: 810px;
   height: 50px;
+  margin-top: 20px;
   border: 2px solid lightgrey;
   color: var(--brown-color);
   border-radius: 5px;
   background-color: var(--background-color);
   padding-left: 10px;
+  padding-right: 45px;
   font-size: 1.2rem;
 }
 
@@ -29,9 +31,10 @@ input:focus {
 .inputIcon {
   position: relative;
   right: -380px;
-  top: -23px;
+  top: -24px;
   transform: translateY(-50%);
   width: 20px;
   height: 20px;
   pointer-events: none;
+  z-index: 99;
 }
