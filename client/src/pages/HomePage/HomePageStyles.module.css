@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 20px;
 }
 
 .auctionHouse {
@@ -58,7 +59,7 @@ form {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  gap: 15px;
+  gap: 0px;
   margin: 0;
   padding: 0;
   border: none;
@@ -98,11 +99,42 @@ form {
 }
 
 .inputIcon {
-  margin-left: -50px;
+  margin-left: -38px;
   margin-top: 8px;
   width: 20px;
   height: 20px;
   pointer-events: none;
+}
+
+.rangeContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0px;
+  background-color: rgb(138, 137, 137);
+  margin-left: 25px;
+}
+
+.rangeContainer .levelRange {
+  width: 55px;
+  height: 35px;
+  border: 2px solid lightgrey;
+  color: var(--brown-color);
+  border-radius: 20px;
+  background-color: var(--background-color);
+  font-size: 1rem;
+  margin-left: 10px;
+  margin-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 0.7rem;
+}
+
+.rangeContainer p {
+  background-color: rgb(138, 137, 137);
+  color: black;
+  margin-left: 10px;
 }
 
 .buttonContainer {
@@ -112,7 +144,7 @@ form {
   align-items: center;
   gap: 15px;
   background-color: rgb(138, 137, 137);
-  margin-left: 185px;
+  margin-left: 25px;
 }
 
 button {
