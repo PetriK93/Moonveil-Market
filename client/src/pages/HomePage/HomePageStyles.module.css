@@ -9,7 +9,7 @@
 
 .auctionHouse {
   width: 836px;
-  height: 600px;
+  height: 624px;
   position: relative;
   border-radius: 5px;
   margin-top: 20px;
@@ -164,6 +164,17 @@ form {
   background-color: var(--brown-color);
   color: white;
   cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.topBtnContainer .topBtn:hover {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.topBtnContainer .topBtn:active {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transform: translateY(2px);
 }
 
 .bottomBtnContainer {
@@ -177,12 +188,28 @@ form {
 }
 
 .bottomBtnContainer .bottomBtn {
-  padding: 17px 17px;
+  position: relative;
+  height: 40px;
+  width: 40px;
   border: 2px solid black;
   border-radius: 5px;
   background-color: var(--brown-color);
   color: white;
   cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottomBtnContainer .bottomBtn:hover {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.bottomBtnContainer .bottomBtn:active {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transform: translateY(2px);
 }
 
 .bottomBtnContainer .prevText {
@@ -199,4 +226,66 @@ form {
   color: white;
   margin: 0;
   margin-right: -25px;
+}
+
+.bottomBtnContainer .btnIconLeft {
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+  margin-left: -2px;
+}
+
+.bottomBtnContainer .btnIconRight {
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+  margin-left: 2px;
+}
+
+.categorySection {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 485px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  margin-top: 6px;
+  margin-left: 6px;
+  text-align: start;
+  border-radius: 5px;
+  gap: 2px;
+}
+
+.category {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 300px;
+  height: 50px;
+  background-color: var(--brown-color);
+  border: 2px solid black;
+  color: white;
+  padding-left: 10px;
+  line-height: normal;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.category:hover {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  transform: translate(-2px, -1px);
+}
+
+.category .categoryIcon {
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+  margin-left: auto;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
