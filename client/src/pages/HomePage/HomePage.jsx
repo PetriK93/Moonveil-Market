@@ -3,6 +3,8 @@ import styles from "./HomePageStyles.module.css";
 import portrait from "../../assets/swordsman.png"; // Temporary
 import searchIcon from "../../assets/Magnifying_glass_png.png";
 import searchGif from "../../assets/Magnifying_glass_gif.gif";
+import previousImg from "../../assets/previous_img.png";
+import nextImg from "../../assets/next_img.png";
 
 const Home = () => {
   const [isFocused, setIsFocused] = useState(false);
@@ -53,7 +55,7 @@ const Home = () => {
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setIsFocused(false)}
               />
-              <p id={styles.levelRange}>-</p>
+              <p>-</p>
               <input
                 className={styles.levelRange}
                 type="text"
@@ -66,17 +68,28 @@ const Home = () => {
                 onBlur={() => setIsFocused(false)}
               />
             </div>
-            <div className={styles.buttonContainer}>
-              <button type="button">Search</button>
-              <button
-                type="reset"
-                onClick={() => {
-                  setLevelMin("");
-                  setLevelMax("");
-                }}
-              >
-                Reset
-              </button>
+            <div className={styles.buttonWrapper}>
+              <div className={styles.topBtnContainer}>
+                <button className={styles.topBtn} type="button">
+                  Search
+                </button>
+                <button
+                  className={styles.topBtn}
+                  type="reset"
+                  onClick={() => {
+                    setLevelMin("");
+                    setLevelMax("");
+                  }}
+                >
+                  Reset
+                </button>
+              </div>
+              <div className={styles.bottomBtnContainer}>
+                <button className={styles.bottomBtn} type="button"></button>
+                <p className={styles.prevText}>Prev</p>
+                <p className={styles.nextText}>Next</p>
+                <button className={styles.bottomBtn} type="button"></button>
+              </div>
             </div>
           </form>
         </div>
