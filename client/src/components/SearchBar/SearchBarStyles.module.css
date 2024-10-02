@@ -37,4 +37,5 @@ input:focus {
   height: 20px;
   pointer-events: none;
   z-index: 99;
+  background-color: transparent;
 }

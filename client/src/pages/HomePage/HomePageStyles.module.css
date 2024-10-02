@@ -83,10 +83,10 @@ form {
 .searchSection input {
   width: 300px;
   height: 40px;
-  border: 2px solid lightgrey;
+  border: 2px solid rgb(104, 103, 103);
   color: var(--brown-color);
   border-radius: 20px;
-  background-color: var(--background-color);
+  background-color: white;
   font-size: 1rem;
   margin-left: 113px;
   margin-top: 5px;
@@ -104,6 +104,7 @@ form {
   width: 20px;
   height: 20px;
   pointer-events: none;
+  background-color: transparent;
 }
 
 .rangeContainer {
@@ -113,16 +114,16 @@ form {
   align-items: center;
   gap: 0px;
   background-color: rgb(138, 137, 137);
-  margin-left: 25px;
+  margin-left: 27px;
 }
 
 .rangeContainer .levelRange {
   width: 55px;
   height: 35px;
-  border: 2px solid lightgrey;
+  border: 2px solid rgb(104, 103, 103);
   color: var(--brown-color);
   border-radius: 20px;
-  background-color: var(--background-color);
+  background-color: white;
   font-size: 1rem;
   margin-left: 10px;
   margin-top: 5px;
@@ -144,6 +145,7 @@ form {
   justify-content: center;
   background-color: transparent;
   gap: 13px;
+  margin-left: 11px;
 }
 
 .topBtnContainer {
@@ -277,6 +279,11 @@ form {
 .category:hover {
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
   transform: translate(-2px, -1px);
+}
+
+.category:active {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transform: translate(0px, 0px);
 }
 
 .category .categoryIcon {
