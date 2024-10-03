@@ -52,14 +52,14 @@ ul {
   font-size: 1.2rem;
 }
 
-li {
+nav ul li {
   position: relative;
   margin: 0 1rem;
   margin-top: 38px;
   margin-bottom: 50px;
 }
 
-li::after {
+nav ul li::after {
   content: "";
   position: absolute;
   margin-bottom: -6px;
@@ -86,4 +86,21 @@ hr {
   background-color: lightgrey;
   width: 100vw;
   margin-top: 5px;
+}
+
+h1 {
+  position: relative;
+  padding-bottom: 0px;
+}
+
+h1::after {
+  content: "";
+  display: block;
+  width: 110%;
+  height: 3px;
+  background-color: var(--brown-color);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
 }

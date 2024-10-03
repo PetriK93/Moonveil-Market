@@ -29,23 +29,6 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-h1 {
-  position: relative;
-  padding-bottom: 0px;
-}
-
-h1::after {
-  content: "";
-  display: block;
-  width: 110%;
-  height: 3px;
-  background-color: var(--brown-color);
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 0;
-}
-
 @font-face {
   font-family: "Elementary Gothic Bookhand";
   src: url("./assets/fonts/Elementary_Gothic_Bookhand.ttf") format("truetype");

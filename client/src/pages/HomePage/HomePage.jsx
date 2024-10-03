@@ -29,6 +29,16 @@ const Home = () => {
     }
   };
 
+  const [dropdown, setDropdown] = useState(null);
+
+  const toggleDropdown = (category) => {
+    if (dropdown === category) {
+      setDropdown(null);
+    } else {
+      setDropdown(category);
+    }
+  };
+
   return (
     <div className={styles.container}>
       <h1>Browse Auctions</h1>
@@ -43,6 +53,7 @@ const Home = () => {
         <div className={styles.searchSection}>
           <form>
             <input
+              name="name"
               type="text"
               placeholder="Name"
               onFocus={() => setIsFocused(true)}
@@ -55,6 +66,7 @@ const Home = () => {
             />
             <div className={styles.rangeContainer}>
               <input
+                name="minimum level"
                 className={styles.levelRange}
                 type="text"
                 value={levelMin}
@@ -67,6 +79,7 @@ const Home = () => {
               />
               <p>-</p>
               <input
+                name="maximum level"
                 className={styles.levelRange}
                 type="text"
                 value={levelMax}
@@ -116,86 +129,153 @@ const Home = () => {
           </form>
         </div>
         <div className={styles.categorySection}>
-          <button className={styles.category}>
-            Weapons
-            <img
-              src={weaponsCategory}
-              alt="Weapons category"
-              className={styles.categoryIcon}
-            />
-          </button>
-          <button className={styles.category}>
-            Armor
-            <img
-              src={armorCategory}
-              alt="Armor category"
-              className={styles.categoryIcon}
-            />
-          </button>
-          <button className={styles.category}>
-            Potions
-            <img
-              src={potionsCategory}
-              alt="Potions category"
-              className={styles.categoryIcon}
-            />
-          </button>
-          <button className={styles.category}>
-            Food
-            <img
-              src={foodCategory}
-              alt="Food category"
-              className={styles.categoryIcon}
-            />
-          </button>
-          <button className={styles.category}>
-            Enchantments
-            <img
-              src={enchantmentsCategory}
-              alt="Enchantments category"
-              className={styles.categoryIcon}
-            />
-          </button>
-          <button className={styles.category}>
-            Crafting tools
-            <img
-              src={craftingCategory}
-              alt="Crafting tools category"
-              className={styles.categoryIcon}
-            />
-          </button>
-          <button className={styles.category}>
-            Crafting materials
-            <img
-              src={craftingMaterialsCategory}
-              alt="Crafting materials category"
-              className={styles.categoryIcon}
-            />
-          </button>
-          <button className={styles.category}>
-            Recipes
-            <img
-              src={recipesCategory}
-              alt="Recipes category"
-              className={styles.categoryIcon}
-            />
-          </button>
-          <button className={styles.category}>
-            Bags
-            <img
-              src={bagsCategory}
-              alt="Bags category"
-              className={styles.categoryIcon}
-            />
-          </button>
-          <button className={styles.category}>
-            Quest items
-            <img
-              src={questItemsCategory}
-              alt="Quest items category"
-              className={styles.categoryIcon}
-            />
-          </button>
+          <div className={styles.categoryWrapper}>
+            <button
+              className={styles.category}
+              onClick={() => toggleDropdown("weapons")}
+            >
+              Weapons
+              <img
+                src={weaponsCategory}
+                alt="Weapons category"
+                className={styles.categoryIcon}
+              />
+            </button>
+            {dropdown === "weapons" && (
+              <div className={styles.dropdown}>
+                <ul>
+                  <li>One-handed Swords</li>
+                  <li>Two-handed Swords</li>
+                  <li>One-handed Maces</li>
+                  <li>Two-handed Maces</li>
+                  <li>One-handed Axes</li>
+                  <li>Two-handed Axes</li>
+                  <li>Daggers</li>
+                  <li>Bows</li>
+                  <li>Spears</li>
+                  <li>Staffs</li>
+                  <li>Fist weapons</li>
+                </ul>
+              </div>
+            )}
+          </div>
+          <div className={styles.categoryWrapper}>
+            <button
+              className={styles.category}
+              onClick={() => toggleDropdown("armor")}
+            >
+              Armor
+              <img
+                src={armorCategory}
+                alt="Armor category"
+                className={styles.categoryIcon}
+              />
+            </button>
+          </div>
+          <div className={styles.categoryWrapper}>
+            <button
+              className={styles.category}
+              onClick={() => toggleDropdown("potions")}
+            >
+              Potions
+              <img
+                src={potionsCategory}
+                alt="Potions category"
+                className={styles.categoryIcon}
+              />
+            </button>
+          </div>
+          <div className={styles.categoryWrapper}>
+            <button
+              className={styles.category}
+              onClick={() => toggleDropdown("food")}
+            >
+              Food
+              <img
+                src={foodCategory}
+                alt="Food category"
+                className={styles.categoryIcon}
+              />
+            </button>
+          </div>
+          <div className={styles.categoryWrapper}>
+            <button
+              className={styles.category}
+              onClick={() => toggleDropdown("enchantments")}
+            >
+              Enchantments
+              <img
+                src={enchantmentsCategory}
+                alt="Enchantments category"
+                className={styles.categoryIcon}
+              />
+            </button>
+          </div>
+          <div className={styles.categoryWrapper}>
+            <button
+              className={styles.category}
+              onClick={() => toggleDropdown("crafting tools")}
+            >
+              Crafting tools
+              <img
+                src={craftingCategory}
+                alt="Crafting tools category"
+                className={styles.categoryIcon}
+              />
+            </button>
+          </div>
+          <div className={styles.categoryWrapper}>
+            <button
+              className={styles.category}
+              onClick={() => toggleDropdown("crafting materials")}
+            >
+              Crafting materials
+              <img
+                src={craftingMaterialsCategory}
+                alt="Crafting materials category"
+                className={styles.categoryIcon}
+              />
+            </button>
+          </div>
+          <div className={styles.categoryWrapper}>
+            <button
+              className={styles.category}
+              onClick={() => toggleDropdown("recipes")}
+            >
+              Recipes
+              <img
+                src={recipesCategory}
+                alt="Recipes category"
+                className={styles.categoryIcon}
+              />
+            </button>
+          </div>
+          <div className={styles.categoryWrapper}>
+            <button
+              className={styles.category}
+              onClick={() => toggleDropdown("bags")}
+            >
+              Bags
+              <img
+                src={bagsCategory}
+                alt="Bags category"
+                className={styles.categoryIcon}
+              />
+            </button>
+          </div>
+          <div className={styles.categoryWrapper}>
+            <button
+              className={styles.category}
+              onClick={() => toggleDropdown("quest items")}
+            >
+              Quest items
+              <img
+                src={questItemsCategory}
+                alt="Quest items category"
+                className={styles.categoryIcon}
+              />
+            </button>
+          </div>
         </div>
       </div>
     </div>
