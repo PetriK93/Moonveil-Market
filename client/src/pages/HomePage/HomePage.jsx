@@ -30,10 +30,15 @@ const Home = () => {
   };
 
   const [dropdown, setDropdown] = useState(null);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const toggleDropdown = (category) => {
     if (dropdown === category) {
-      setDropdown(null);
+      setIsAnimating(true);
+      setTimeout(() => {
+        setDropdown(null);
+        setIsAnimating(false);
+      }, 400);
     } else {
       setDropdown(category);
     }
@@ -142,7 +147,13 @@ const Home = () => {
               />
             </button>
             {dropdown === "weapons" && (
-              <div className={styles.dropdown}>
+              <div
+                className={`${styles.dropdown} ${
+                  dropdown === "weapons" && !isAnimating
+                    ? styles.open
+                    : styles.closed
+                }`}
+              >
                 <ul>
                   <li>One-handed Swords</li>
                   <li>Two-handed Swords</li>

@@ -308,12 +308,19 @@ form {
   background-color: transparent;
   padding: 5px;
   overflow: hidden;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 1s ease;
 }
 
 .dropdown.open {
-  max-height: 300px;
+  max-height: 600px;
   opacity: 1;
+  animation: dropdownOpen 0.4s forwards;
+}
+
+.dropdown.closed {
+  animation: dropdownClose 0.4s forwards;
 }
 
 .dropdown ul {
@@ -326,7 +333,7 @@ form {
   margin: 0;
 }
 
-.dropdown li {
+.dropdown ul li {
   width: 100%;
   max-width: 270px;
   height: 48px;
@@ -341,6 +348,28 @@ form {
   margin: 3px 0 0 -18px;
 }
 
-.dropdown li:hover {
+.dropdown ul li:hover {
   background-color: rgb(197, 196, 196);
+}
+
+@keyframes dropdownOpen {
+  from {
+    max-height: 0;
+    opacity: 0;
+  }
+  to {
+    max-height: 1000px; /* Or a value that fits your content */
+    opacity: 1;
+  }
+}
+
+@keyframes dropdownClose {
+  from {
+    max-height: 1000px; /* Match the open animation */
+    opacity: 1;
+  }
+  to {
+    max-height: 0;
+    opacity: 0;
+  }
 }

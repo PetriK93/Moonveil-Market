@@ -17,18 +17,6 @@
   box-sizing: border-box;
 }
 
-/* Chrome, Safari, Edge, Opera */
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Firefox */
-input[type="number"] {
-  -moz-appearance: textfield;
-}
-
 @font-face {
   font-family: "Elementary Gothic Bookhand";
   src: url("./assets/fonts/Elementary_Gothic_Bookhand.ttf") format("truetype");
