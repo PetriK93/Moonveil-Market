@@ -19,6 +19,7 @@
   border: 2px solid var(--brown-color);
   background-color: var(--light-brown-color);
   border-radius: 5px;
+  margin-top: 7px;
 }
 
 .categoryItem {

@@ -155,17 +155,17 @@ const Home = () => {
                 }`}
               >
                 <ul>
-                  <li>One-handed Swords</li>
-                  <li>Two-handed Swords</li>
-                  <li>One-handed Maces</li>
-                  <li>Two-handed Maces</li>
-                  <li>One-handed Axes</li>
-                  <li>Two-handed Axes</li>
-                  <li>Daggers</li>
-                  <li>Bows</li>
-                  <li>Spears</li>
-                  <li>Staffs</li>
-                  <li>Fist weapons</li>
+                  <li>One-handed sword</li>
+                  <li>Two-handed sword</li>
+                  <li>One-handed mace</li>
+                  <li>Two-handed mace</li>
+                  <li>One-handed axe</li>
+                  <li>Two-handed axe</li>
+                  <li>Dagger</li>
+                  <li>Bow</li>
+                  <li>Spear</li>
+                  <li>Staff</li>
+                  <li>Fist weapon</li>
                 </ul>
               </div>
             )}
@@ -182,6 +182,22 @@ const Home = () => {
                 className={styles.categoryIcon}
               />
             </button>
+            {dropdown === "armor" && (
+              <div
+                className={`${styles.dropdown} ${
+                  dropdown === "armor" && !isAnimating
+                    ? styles.open
+                    : styles.closed
+                }`}
+              >
+                <ul>
+                  <li>Heavy armor</li>
+                  <li>Medium armor</li>
+                  <li>Light armor</li>
+                  <li>Shield</li>
+                </ul>
+              </div>
+            )}
           </div>
           <div className={styles.categoryWrapper}>
             <button
@@ -195,6 +211,24 @@ const Home = () => {
                 className={styles.categoryIcon}
               />
             </button>
+            {dropdown === "potions" && (
+              <div
+                className={`${styles.dropdown} ${
+                  dropdown === "potions" && !isAnimating
+                    ? styles.open
+                    : styles.closed
+                }`}
+              >
+                <ul>
+                  <li>Healing potion</li>
+                  <li>Mana potion</li>
+                  <li>Antidote</li>
+                  <li>Strength potion</li>
+                  <li>Agility potion</li>
+                  <li>Intellect potion</li>
+                </ul>
+              </div>
+            )}
           </div>
           <div className={styles.categoryWrapper}>
             <button
@@ -208,6 +242,25 @@ const Home = () => {
                 className={styles.categoryIcon}
               />
             </button>
+            {dropdown === "food" && (
+              <div
+                className={`${styles.dropdown} ${
+                  dropdown === "food" && !isAnimating
+                    ? styles.open
+                    : styles.closed
+                }`}
+              >
+                <ul>
+                  <li>Double XP for kills</li>
+                  <li>Double XP for crafting</li>
+                  <li>Movement speed</li>
+                  <li>Elemental resistance</li>
+                  <li>Physical resistance</li>
+                  <li>Increase health</li>
+                  <li>Increase mana</li>
+                </ul>
+              </div>
+            )}
           </div>
           <div className={styles.categoryWrapper}>
             <button
@@ -221,6 +274,24 @@ const Home = () => {
                 className={styles.categoryIcon}
               />
             </button>
+            {dropdown === "enchantments" && (
+              <div
+                className={`${styles.dropdown} ${
+                  dropdown === "enchantments" && !isAnimating
+                    ? styles.open
+                    : styles.closed
+                }`}
+              >
+                <ul>
+                  <li>Flamebrand</li>
+                  <li>Aquabane</li>
+                  <li>Quakefury</li>
+                  <li>Tempest edge</li>
+                  <li>Storm's fury</li>
+                  <li>Necrotic touch</li>
+                </ul>
+              </div>
+            )}
           </div>
           <div className={styles.categoryWrapper}>
             <button
@@ -234,6 +305,26 @@ const Home = () => {
                 className={styles.categoryIcon}
               />
             </button>
+            {dropdown === "crafting tools" && (
+              <div
+                className={`${styles.dropdown} ${
+                  dropdown === "crafting tools" && !isAnimating
+                    ? styles.open
+                    : styles.closed
+                }`}
+              >
+                <ul>
+                  <li>Hammer</li>
+                  <li>Pickaxe</li>
+                  <li>Carving knife</li>
+                  <li>Flask</li>
+                  <li>Skinning knife</li>
+                  <li>Shears</li>
+                  <li>Engraving tool</li>
+                  <li>Cooking pot</li>
+                </ul>
+              </div>
+            )}
           </div>
           <div className={styles.categoryWrapper}>
             <button
@@ -247,6 +338,26 @@ const Home = () => {
                 className={styles.categoryIcon}
               />
             </button>
+            {dropdown === "crafting materials" && (
+              <div
+                className={`${styles.dropdown} ${
+                  dropdown === "crafting materials" && !isAnimating
+                    ? styles.open
+                    : styles.closed
+                }`}
+              >
+                <ul>
+                  <li>Ore</li>
+                  <li>Wood</li>
+                  <li>Leather</li>
+                  <li>Cloth</li>
+                  <li>Herbs</li>
+                  <li>Meat</li>
+                  <li>Vegetables & fruits</li>
+                  <li>Runestones</li>
+                </ul>
+              </div>
+            )}
           </div>
           <div className={styles.categoryWrapper}>
             <button
@@ -260,6 +371,25 @@ const Home = () => {
                 className={styles.categoryIcon}
               />
             </button>
+            {dropdown === "recipes" && (
+              <div
+                className={`${styles.dropdown} ${
+                  dropdown === "recipes" && !isAnimating
+                    ? styles.open
+                    : styles.closed
+                }`}
+              >
+                <ul>
+                  <li>Blacksmithing recipes</li>
+                  <li>Carpenting recipes</li>
+                  <li>Leatherworking recipes</li>
+                  <li>Clothing recipes</li>
+                  <li>Runecrafting recipes</li>
+                  <li>Alchemy recipes</li>
+                  <li>Cooking recipes</li>
+                </ul>
+              </div>
+            )}
           </div>
           <div className={styles.categoryWrapper}>
             <button
@@ -273,6 +403,20 @@ const Home = () => {
                 className={styles.categoryIcon}
               />
             </button>
+            {dropdown === "bags" && (
+              <div
+                className={`${styles.dropdown} ${
+                  dropdown === "bags" && !isAnimating
+                    ? styles.open
+                    : styles.closed
+                }`}
+              >
+                <ul>
+                  <li>Regular backpacks</li>
+                  <li>Crafting bags</li>
+                </ul>
+              </div>
+            )}
           </div>
           <div className={styles.categoryWrapper}>
             <button
@@ -286,6 +430,20 @@ const Home = () => {
                 className={styles.categoryIcon}
               />
             </button>
+            {dropdown === "quest items" && (
+              <div
+                className={`${styles.dropdown} ${
+                  dropdown === "quest items" && !isAnimating
+                    ? styles.open
+                    : styles.closed
+                }`}
+              >
+                <ul>
+                  <li>Monster & animal parts</li>
+                  <li>Collectibles</li>
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </div>

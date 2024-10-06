@@ -5,6 +5,7 @@
   align-items: center;
   justify-content: center;
   margin-top: 20px;
+  margin-bottom: 0;
 }
 
 .auctionHouse {
@@ -358,14 +359,14 @@ form {
     opacity: 0;
   }
   to {
-    max-height: 1000px; /* Or a value that fits your content */
+    max-height: 1000px;
     opacity: 1;
   }
 }
 
 @keyframes dropdownClose {
   from {
-    max-height: 1000px; /* Match the open animation */
+    max-height: 1000px;
     opacity: 1;
   }
   to {
