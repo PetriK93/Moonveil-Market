@@ -20,6 +20,7 @@
   background-color: var(--light-brown-color);
   border-radius: 5px;
   margin-top: 7px;
+  margin-bottom: 5px;
 }
 
 .categoryItem {

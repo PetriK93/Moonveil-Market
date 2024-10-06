@@ -57,6 +57,7 @@ nav ul li {
   margin: 0 1rem;
   margin-top: 38px;
   margin-bottom: 50px;
+  cursor: pointer;
 }
 
 nav ul li::after {

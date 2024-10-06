@@ -20,6 +20,11 @@ const Home = () => {
   const [isFocused, setIsFocused] = useState(false);
   const [levelMin, setLevelMin] = useState("");
   const [levelMax, setLevelMax] = useState("");
+  const [dropdown, setDropdown] = useState(null);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [tab, setTab] = useState("browse");
+  const [isBrowseFlashing, setIsBrowseFlashing] = useState(false);
+  const [isSellFlashing, setIsSellFlashing] = useState(false);
 
   const handleLevelChange = (e, setValue) => {
     const value = e.target.value;
@@ -28,9 +33,6 @@ const Home = () => {
       setValue(value);
     }
   };
-
-  const [dropdown, setDropdown] = useState(null);
-  const [isAnimating, setIsAnimating] = useState(false);
 
   const toggleDropdown = (category) => {
     if (dropdown === category) {
@@ -44,8 +46,26 @@ const Home = () => {
     }
   };
 
+  const handleBrowse = () => {
+    setIsBrowseFlashing(true);
+    setTab("browse");
+
+    setTimeout(() => {
+      setIsBrowseFlashing(false);
+    }, 500);
+  };
+
+  const handleSell = () => {
+    setIsSellFlashing(true);
+    setTab("browse");
+
+    setTimeout(() => {
+      setIsSellFlashing(false);
+    }, 500);
+  };
+
   return (
-    <div className={styles.container}>
+    <div id="auction-house" className={styles.container}>
       <h1>Browse Auctions</h1>
       <div className={styles.auctionHouse}>
         <div className={styles.classPortrait}>
@@ -136,6 +156,7 @@ const Home = () => {
         <div className={styles.categorySection}>
           <div className={styles.categoryWrapper}>
             <button
+              type="button"
               className={styles.category}
               onClick={() => toggleDropdown("weapons")}
             >
@@ -155,23 +176,24 @@ const Home = () => {
                 }`}
               >
                 <ul>
-                  <li>One-handed sword</li>
-                  <li>Two-handed sword</li>
-                  <li>One-handed mace</li>
-                  <li>Two-handed mace</li>
-                  <li>One-handed axe</li>
-                  <li>Two-handed axe</li>
-                  <li>Dagger</li>
-                  <li>Bow</li>
-                  <li>Spear</li>
-                  <li>Staff</li>
-                  <li>Fist weapon</li>
+                  <li>One-handed swords</li>
+                  <li>Two-handed swords</li>
+                  <li>One-handed maces</li>
+                  <li>Two-handed maces</li>
+                  <li>One-handed axes</li>
+                  <li>Two-handed axes</li>
+                  <li>Daggers</li>
+                  <li>Bows</li>
+                  <li>Spears</li>
+                  <li>Staves</li>
+                  <li>Fist weapons</li>
                 </ul>
               </div>
             )}
           </div>
           <div className={styles.categoryWrapper}>
             <button
+              type="button"
               className={styles.category}
               onClick={() => toggleDropdown("armor")}
             >
@@ -194,13 +216,14 @@ const Home = () => {
                   <li>Heavy armor</li>
                   <li>Medium armor</li>
                   <li>Light armor</li>
-                  <li>Shield</li>
+                  <li>Shields</li>
                 </ul>
               </div>
             )}
           </div>
           <div className={styles.categoryWrapper}>
             <button
+              type="button"
               className={styles.category}
               onClick={() => toggleDropdown("potions")}
             >
@@ -220,18 +243,19 @@ const Home = () => {
                 }`}
               >
                 <ul>
-                  <li>Healing potion</li>
-                  <li>Mana potion</li>
-                  <li>Antidote</li>
-                  <li>Strength potion</li>
-                  <li>Agility potion</li>
-                  <li>Intellect potion</li>
+                  <li>Healing potions</li>
+                  <li>Mana potions</li>
+                  <li>Antidotes</li>
+                  <li>Strength potions</li>
+                  <li>Agility potions</li>
+                  <li>Intellect potions</li>
                 </ul>
               </div>
             )}
           </div>
           <div className={styles.categoryWrapper}>
             <button
+              type="button"
               className={styles.category}
               onClick={() => toggleDropdown("food")}
             >
@@ -264,6 +288,7 @@ const Home = () => {
           </div>
           <div className={styles.categoryWrapper}>
             <button
+              type="button"
               className={styles.category}
               onClick={() => toggleDropdown("enchantments")}
             >
@@ -287,7 +312,7 @@ const Home = () => {
                   <li>Aquabane</li>
                   <li>Quakefury</li>
                   <li>Tempest edge</li>
-                  <li>Storm's fury</li>
+                  <li>Storm's wrath</li>
                   <li>Necrotic touch</li>
                 </ul>
               </div>
@@ -295,6 +320,7 @@ const Home = () => {
           </div>
           <div className={styles.categoryWrapper}>
             <button
+              type="button"
               className={styles.category}
               onClick={() => toggleDropdown("crafting tools")}
             >
@@ -314,20 +340,21 @@ const Home = () => {
                 }`}
               >
                 <ul>
-                  <li>Hammer</li>
-                  <li>Pickaxe</li>
-                  <li>Carving knife</li>
-                  <li>Flask</li>
-                  <li>Skinning knife</li>
+                  <li>Hammers</li>
+                  <li>Pickaxes</li>
+                  <li>Carving knives</li>
+                  <li>Flasks</li>
+                  <li>Skinning knives</li>
                   <li>Shears</li>
-                  <li>Engraving tool</li>
-                  <li>Cooking pot</li>
+                  <li>Engraving tools</li>
+                  <li>Cooking pots</li>
                 </ul>
               </div>
             )}
           </div>
           <div className={styles.categoryWrapper}>
             <button
+              type="button"
               className={styles.category}
               onClick={() => toggleDropdown("crafting materials")}
             >
@@ -361,6 +388,7 @@ const Home = () => {
           </div>
           <div className={styles.categoryWrapper}>
             <button
+              type="button"
               className={styles.category}
               onClick={() => toggleDropdown("recipes")}
             >
@@ -393,6 +421,7 @@ const Home = () => {
           </div>
           <div className={styles.categoryWrapper}>
             <button
+              type="button"
               className={styles.category}
               onClick={() => toggleDropdown("bags")}
             >
@@ -420,6 +449,7 @@ const Home = () => {
           </div>
           <div className={styles.categoryWrapper}>
             <button
+              type="button"
               className={styles.category}
               onClick={() => toggleDropdown("quest items")}
             >
@@ -446,6 +476,21 @@ const Home = () => {
             )}
           </div>
         </div>
+      </div>
+      <div className={styles.tabsContainer}>
+        <button
+          className={`${styles.tab} ${isBrowseFlashing ? styles.flash : ""}`}
+          onClick={handleBrowse}
+        >
+          Browse
+        </button>
+        <button
+          className={`${styles.tab} ${isSellFlashing ? styles.flash : ""}`}
+          type="button"
+          onClick={handleSell}
+        >
+          Sell
+        </button>
       </div>
     </div>
   );

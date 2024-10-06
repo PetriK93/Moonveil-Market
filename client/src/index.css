@@ -17,6 +17,11 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 @font-face {
   font-family: "Elementary Gothic Bookhand";
   src: url("./assets/fonts/Elementary_Gothic_Bookhand.ttf") format("truetype");

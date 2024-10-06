@@ -15,7 +15,7 @@ const NavBar = () => {
           </Link>
           <ul>
             <li>
-              <Link to="/list-item">List an item for sale</Link>
+              <Link to="/">Auction House</Link>
             </li>
             <li>
               <Link to="/messages">Messages</Link>
