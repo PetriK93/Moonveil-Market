@@ -378,6 +378,7 @@ form {
 .tabsContainer {
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 15px;
   text-align: center;
   margin-left: -740px;

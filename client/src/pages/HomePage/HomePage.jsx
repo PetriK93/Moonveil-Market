@@ -17,6 +17,8 @@ import craftingMaterialsCategory from "../../assets/craftingMaterials_category.p
 import foodCategory from "../../assets/food_category.png";
 
 const Home = () => {
+  // useStates
+  const [name, setName] = useState("");
   const [isFocused, setIsFocused] = useState(false);
   const [levelMin, setLevelMin] = useState("");
   const [levelMax, setLevelMax] = useState("");
@@ -26,14 +28,29 @@ const Home = () => {
   const [isBrowseFlashing, setIsBrowseFlashing] = useState(false);
   const [isSellFlashing, setIsSellFlashing] = useState(false);
 
+  // Allows you to set the desired value to an input field
   const handleLevelChange = (e, setValue) => {
     const value = e.target.value;
 
+    // Allow only digits, up to 2 digits
     if (/^\d{0,2}$/.test(value)) {
       setValue(value);
     }
   };
 
+  // Adjusts min level to be always less or equal to max level
+  const handleLevelBlur = (minValue, maxValue, setMin) => {
+    if (
+      minValue !== "" &&
+      maxValue !== "" &&
+      parseInt(minValue) > parseInt(maxValue)
+    ) {
+      setMin(maxValue);
+    }
+    setIsFocused(false);
+  };
+
+  // Toggles animation and sets dropdown useState
   const toggleDropdown = (category) => {
     if (dropdown === category) {
       setIsAnimating(true);
@@ -46,19 +63,21 @@ const Home = () => {
     }
   };
 
+  // Toggles animation and sets "browse" as the current tab
   const handleBrowse = () => {
     setIsBrowseFlashing(true);
     setTab("browse");
-
+    // Makes sure the animation has time to play out. Sync with animation.
     setTimeout(() => {
       setIsBrowseFlashing(false);
     }, 500);
   };
 
+  // Toggles animation and sets "sell" as the current tab
   const handleSell = () => {
     setIsSellFlashing(true);
-    setTab("browse");
-
+    setTab("sell");
+    // Makes sure the animation has time to play out
     setTimeout(() => {
       setIsSellFlashing(false);
     }, 500);
@@ -80,6 +99,8 @@ const Home = () => {
             <input
               name="name"
               type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               placeholder="Name"
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)}
@@ -95,12 +116,11 @@ const Home = () => {
                 className={styles.levelRange}
                 type="text"
                 value={levelMin}
-                min="1"
-                max="60"
                 placeholder="Min"
                 onChange={(e) => handleLevelChange(e, setLevelMin)}
-                onFocus={() => setIsFocused(true)}
-                onBlur={() => setIsFocused(false)}
+                onBlur={() =>
+                  handleLevelBlur(levelMin, levelMax, setLevelMin, setLevelMax)
+                }
               />
               <p>-</p>
               <input
@@ -108,12 +128,11 @@ const Home = () => {
                 className={styles.levelRange}
                 type="text"
                 value={levelMax}
-                min="1"
-                max="60"
                 placeholder="Max"
                 onChange={(e) => handleLevelChange(e, setLevelMax)}
-                onFocus={() => setIsFocused(true)}
-                onBlur={() => setIsFocused(false)}
+                onBlur={() =>
+                  handleLevelBlur(levelMin, levelMax, setLevelMin, setLevelMax)
+                }
               />
             </div>
             <div className={styles.buttonWrapper}>
@@ -123,10 +142,16 @@ const Home = () => {
                 </button>
                 <button
                   className={styles.topBtn}
-                  type="reset"
+                  type="button"
                   onClick={() => {
                     setLevelMin("");
                     setLevelMax("");
+                    setName("");
+                    setIsAnimating(true);
+                    setTimeout(() => {
+                      setDropdown(null);
+                      setIsAnimating(false);
+                    }, 400);
                   }}
                 >
                   Reset
