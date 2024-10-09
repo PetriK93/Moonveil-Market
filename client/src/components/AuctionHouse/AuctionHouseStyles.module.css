@@ -8,7 +8,7 @@
   margin-bottom: 0;
 }
 
-.auctionHouse {
+.browseTab {
   width: 836px;
   min-height: 624px;
   height: auto;
@@ -418,4 +418,15 @@ form {
   100% {
     background-color: #36454f;
   }
+}
+
+.sellTab {
+  width: 836px;
+  min-height: 659px;
+  height: auto;
+  position: relative;
+  border-radius: 5px;
+  margin-top: 20px;
+  border: 2px solid black;
+  background-color: rgb(138, 137, 137);
 }

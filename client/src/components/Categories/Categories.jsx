@@ -27,7 +27,7 @@ const categories = [
 const CategoryList = () => {
   return (
     <div className={styles.container}>
-      <h1>Quick Select</h1>
+      <h1>Select Class</h1>
       <div className={styles.categoryContainer}>
         {categories.map((category, index) => (
           <div key={index} className={styles.categoryItem}>
