@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./AuctionHouseStyles.module.css";
 import portrait from "../../assets/swordsman.png"; // Temporary
 import searchIcon from "../../assets/Magnifying_glass_png.png";
@@ -27,6 +27,43 @@ const Home = () => {
   const [tab, setTab] = useState("browse");
   const [isBrowseFlashing, setIsBrowseFlashing] = useState(false);
   const [isSellFlashing, setIsSellFlashing] = useState(false);
+  const categorySectionRef = useRef(null);
+
+  // Prevents scrolling the page itself when inside the categorySection
+  useEffect(() => {
+    const categorySection = categorySectionRef.current;
+
+    const handleScroll = (event) => {
+      const scrollTop = categorySection.scrollTop;
+      const scrollHeight = categorySection.scrollHeight;
+      const height = categorySection.clientHeight;
+      const wheelDelta = event.deltaY;
+      const isScrollingDown = wheelDelta > 0;
+
+      if (isScrollingDown) {
+        // Prevent scrolling down if already at the bottom
+        if (scrollTop + height >= scrollHeight) {
+          event.preventDefault();
+        }
+      } else {
+        // Prevent scrolling up if already at the top
+        if (scrollTop <= 0) {
+          event.preventDefault();
+        }
+      }
+    };
+
+    if (tab === "browse") {
+      categorySection.addEventListener("wheel", handleScroll);
+    }
+
+    // Clean up the event listener when the component unmounts or tab changes
+    return () => {
+      if (tab === "browse") {
+        categorySection.removeEventListener("wheel", handleScroll);
+      }
+    };
+  }, [tab]);
 
   // Allows you to set the desired value to an input field
   const handleLevelChange = (e, setValue) => {
@@ -190,7 +227,7 @@ const Home = () => {
               </div>
             </form>
           </div>
-          <div className={styles.categorySection}>
+          <div ref={categorySectionRef} className={styles.categorySection}>
             <div className={styles.categoryWrapper}>
               <button
                 type="button"
