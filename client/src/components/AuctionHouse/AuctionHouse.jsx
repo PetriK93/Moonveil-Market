@@ -77,6 +77,7 @@ const Home = () => {
   const handleSell = () => {
     setIsSellFlashing(true);
     setTab("sell");
+    setDropdown(null);
     // Makes sure the animation has time to play out
     setTimeout(() => {
       setIsSellFlashing(false);
@@ -521,6 +522,16 @@ const Home = () => {
               src={portrait}
               alt="Class portrait"
             />
+          </div>
+          <div className={styles.createAuctionSection}>
+            <h2 id={styles.createAuctionTitle}>Create Auction</h2>
+            <div className={styles.auctionItem}>
+              <h3 id={styles.auctionItemTitle}>Auction Item</h3>
+              <div className={styles.auctionWrapper}>
+                <div className={styles.dropZone}></div>
+                <div className={styles.itemName}>Item Name</div>
+              </div>
+            </div>
           </div>
         </div>
       )}
