@@ -12,6 +12,8 @@ const SearchBar = () => {
       <input
         type="text"
         placeholder="Search for the desired item"
+        autoComplete="off"
+        spellCheck="false"
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
       />

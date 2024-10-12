@@ -139,6 +139,8 @@ const Home = () => {
                 name="name"
                 type="text"
                 value={name}
+                autoComplete="off"
+                spellCheck="false"
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Name"
                 onFocus={() => setIsFocused(true)}
