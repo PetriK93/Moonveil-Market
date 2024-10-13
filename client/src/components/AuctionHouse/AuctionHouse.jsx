@@ -17,7 +17,7 @@ import craftingMaterialsCategory from "../../assets/craftingMaterials_category.p
 import foodCategory from "../../assets/food_category.png";
 
 const Home = () => {
-  // useStates
+  // useStates & UseRefs
   const [name, setName] = useState("");
   const [isFocused, setIsFocused] = useState(false);
   const [levelMin, setLevelMin] = useState("");
@@ -65,7 +65,7 @@ const Home = () => {
     };
   }, [tab]);
 
-  // Allows you to set the desired value to an input field
+  // Allows you to set a filtered value to an input field
   const handleLevelChange = (e, setValue) => {
     const value = e.target.value;
 
@@ -119,6 +119,15 @@ const Home = () => {
     setTimeout(() => {
       setIsSellFlashing(false);
     }, 500);
+  };
+
+  const handleCurrencyBlur = (currencyValue, setCurrencyValue) => {
+    if (currencyValue < 0) {
+      setCurrencyValue(0);
+    }
+    if (currencyValue > 99) {
+      setCurrencyValue(99);
+    }
   };
 
   return (
@@ -569,6 +578,44 @@ const Home = () => {
               <div className={styles.auctionWrapper}>
                 <div className={styles.dropZone}></div>
                 <div className={styles.itemName}>Item Name</div>
+              </div>
+            </div>
+            <div className={styles.pricing}>
+              <h3 className={styles.pricingTitle}>Starting Price</h3>
+              <div className={styles.pricingWrapper}>
+                <input
+                  className={styles.currencyInput}
+                  type="text"
+                  placeholder="Gold"
+                />
+                <input
+                  className={styles.currencyInput}
+                  type="text"
+                  placeholder="Silver"
+                />
+                <input
+                  className={styles.currencyInput}
+                  type="text"
+                  placeholder="Copper"
+                />
+              </div>
+              <h3 className={styles.buyoutTitle}>Buyout Price</h3>
+              <div className={styles.pricingWrapper}>
+                <input
+                  className={styles.currencyInput}
+                  type="text"
+                  placeholder="Gold"
+                />
+                <input
+                  className={styles.currencyInput}
+                  type="text"
+                  placeholder="Silver"
+                />
+                <input
+                  className={styles.currencyInput}
+                  type="text"
+                  placeholder="Copper"
+                />
               </div>
             </div>
           </div>
