@@ -15,6 +15,9 @@ import questItemsCategory from "../../assets/questItems_category.png";
 import bagsCategory from "../../assets/bags_category.png";
 import craftingMaterialsCategory from "../../assets/craftingMaterials_category.png";
 import foodCategory from "../../assets/food_category.png";
+import goldCoin from "../../assets/gold_coin.png";
+import silverCoin from "../../assets/silver_coin.png";
+import copperCoin from "../../assets/copper_coin.png";
 
 const Home = () => {
   // useStates & UseRefs
@@ -28,6 +31,12 @@ const Home = () => {
   const [isBrowseFlashing, setIsBrowseFlashing] = useState(false);
   const [isSellFlashing, setIsSellFlashing] = useState(false);
   const categorySectionRef = useRef(null);
+  const [goldPrice, setGoldPrice] = useState("");
+  const [silverPrice, setSilverPrice] = useState("");
+  const [copperPrice, setCopperPrice] = useState("");
+  const [goldBuyout, setGoldBuyout] = useState("");
+  const [silverBuyout, setSilverBuyout] = useState("");
+  const [copperBuyout, setCopperBuyout] = useState("");
 
   // Prevents scrolling the page itself when inside the categorySection
   useEffect(() => {
@@ -121,12 +130,25 @@ const Home = () => {
     }, 500);
   };
 
-  const handleCurrencyBlur = (currencyValue, setCurrencyValue) => {
-    if (currencyValue < 0) {
-      setCurrencyValue(0);
+  // IMPORTANT NOTE: 1 gold = 100 silver, 1 silver = 100 copper
+
+  // Allows only 2 digits in the silver & copper pricing & buyout input fields
+  const handleCopperSilver = (e, setPrice) => {
+    const value = e.target.value;
+
+    // Allow only digits, up to 2 digits
+    if (/^\d{0,2}$/.test(value)) {
+      setPrice(value);
     }
-    if (currencyValue > 99) {
-      setCurrencyValue(99);
+  };
+
+  // Allows only 4 digits for gold pricing & buyout input fields
+  const handleGold = (e, setPrice) => {
+    const value = e.target.value;
+
+    // Allow only digits, up to 4 digits
+    if (/^\d{0,4}$/.test(value)) {
+      setPrice(value);
     }
   };
 
@@ -587,17 +609,26 @@ const Home = () => {
                   className={styles.currencyInput}
                   type="text"
                   placeholder="Gold"
+                  value={goldPrice}
+                  onChange={(e) => handleGold(e, setGoldPrice)}
                 />
+                <img className={styles.coin} src={goldCoin} alt="Gold" />
                 <input
                   className={styles.currencyInput}
                   type="text"
                   placeholder="Silver"
+                  value={silverPrice}
+                  onChange={(e) => handleCopperSilver(e, setSilverPrice)}
                 />
+                <img className={styles.coin} src={silverCoin} alt="Silver" />
                 <input
                   className={styles.currencyInput}
                   type="text"
                   placeholder="Copper"
+                  value={copperPrice}
+                  onChange={(e) => handleCopperSilver(e, setCopperPrice)}
                 />
+                <img className={styles.coin} src={copperCoin} alt="Copper" />
               </div>
               <h3 className={styles.buyoutTitle}>Buyout Price</h3>
               <div className={styles.pricingWrapper}>
@@ -605,17 +636,26 @@ const Home = () => {
                   className={styles.currencyInput}
                   type="text"
                   placeholder="Gold"
+                  value={goldBuyout}
+                  onChange={(e) => handleGold(e, setGoldBuyout)}
                 />
+                <img className={styles.coin} src={goldCoin} alt="Gold" />
                 <input
                   className={styles.currencyInput}
                   type="text"
                   placeholder="Silver"
+                  value={silverBuyout}
+                  onChange={(e) => handleCopperSilver(e, setSilverBuyout)}
                 />
+                <img className={styles.coin} src={silverCoin} alt="Silver" />
                 <input
                   className={styles.currencyInput}
                   type="text"
                   placeholder="Copper"
+                  value={copperBuyout}
+                  onChange={(e) => handleCopperSilver(e, setCopperBuyout)}
                 />
+                <img className={styles.coin} src={copperCoin} alt="Copper" />
               </div>
             </div>
           </div>
