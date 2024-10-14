@@ -1,2 +1,5 @@
 # Moonveil-Market
- Fantasy themed marketplace website/app. Includes a messaging system between two people. People can post and sell items to other people.
+ Fantasy RPG themed marketplace. Features an auction house, messaging system and profile creation to authenticate users.
+
+
+![Moonveil Market README](https://github.com/user-attachments/assets/e561faef-d765-4255-a4bf-d26a3f7ac3be)
