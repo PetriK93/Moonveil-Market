@@ -15,6 +15,7 @@ import questItemsCategory from "../../assets/questItems_category.png";
 import bagsCategory from "../../assets/bags_category.png";
 import craftingMaterialsCategory from "../../assets/craftingMaterials_category.png";
 import foodCategory from "../../assets/food_category.png";
+import sellIcon from "../../assets/sell_icon.png";
 import goldCoin from "../../assets/gold_coin.png";
 import silverCoin from "../../assets/silver_coin.png";
 import copperCoin from "../../assets/copper_coin.png";
@@ -37,6 +38,7 @@ const Home = () => {
   const [goldBuyout, setGoldBuyout] = useState("");
   const [silverBuyout, setSilverBuyout] = useState("");
   const [copperBuyout, setCopperBuyout] = useState("");
+  const [isDragging, setIsDragging] = useState(false);
 
   // Prevents scrolling the page itself when inside the categorySection
   useEffect(() => {
@@ -149,6 +151,33 @@ const Home = () => {
     // Allow only digits, up to 4 digits
     if (/^\d{0,4}$/.test(value)) {
       setPrice(value);
+    }
+  };
+
+  // When the drag enters the drop zone
+  const handleDragEnter = (e) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  // When the drag is over the drop zone
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  // When the drag leaves the drop zone
+  const handleDragLeave = () => {
+    setIsDragging(false);
+  };
+
+  // When the dragged item is dropped
+  const handleDrop = (e) => {
+    e.preventDefault();
+    setIsDragging(false);
+    // Handle the dropped image here, e.g., reading the file
+    const droppedFiles = e.dataTransfer.files;
+    if (droppedFiles.length) {
+      console.log("Dropped file: ", droppedFiles[0]);
     }
   };
 
@@ -598,11 +627,36 @@ const Home = () => {
             <div className={styles.auctionItem}>
               <h3 id={styles.auctionItemTitle}>Auction Item</h3>
               <div className={styles.auctionWrapper}>
-                <div className={styles.dropZone}></div>
+                <div
+                  className={`${styles.dropZone} ${
+                    isDragging ? "dragging" : ""
+                  }`}
+                  onDragEnter={handleDragEnter}
+                  onDragOver={handleDragOver}
+                  onDragLeave={handleDragLeave}
+                  onDrop={handleDrop}
+                >
+                  <img src={sellIcon} alt="Sell item" />
+                  <div className={styles.hoverText}>Drag your item here!</div>
+                </div>
                 <div className={styles.itemName}>Item Name</div>
               </div>
             </div>
             <div className={styles.pricing}>
+              <div className={styles.priceWrapper}>
+                <h3 className={styles.priceDurationTitle}>Price & Duration</h3>
+                <div className={styles.auctionDropdown}>
+                  <select className={styles.auctionDropdownList}>
+                    <option value="per stack">Per Stack</option>
+                    <option value="per item">Per Item</option>
+                  </select>
+                  <select className={styles.auctionDropdownList}>
+                    <option value="12 hours">12 Hours</option>
+                    <option value="24 hours">24 Hours</option>
+                    <option value="48 hours">48 Hours</option>
+                  </select>
+                </div>
+              </div>
               <h3 className={styles.pricingTitle}>Starting Price</h3>
               <div className={styles.pricingWrapper}>
                 <input
