@@ -490,7 +490,7 @@ form {
   display: flex;
   flex-direction: column;
   width: 477px;
-  min-height: 180px;
+  min-height: 150px;
   background-color: #36454f;
   margin-top: -22px;
   margin-left: 2px;
@@ -582,7 +582,7 @@ form {
   display: flex;
   flex-direction: column;
   width: 477px;
-  min-height: 363px;
+  min-height: 287px;
   background-color: #36454f;
   margin-top: 0;
   margin-left: 2px;
@@ -619,8 +619,8 @@ form {
   border-radius: 5px;
   border: 2px solid rgb(104, 103, 103);
   width: 105px;
-  height: 50px;
-  margin-right: 5px;
+  height: 40px;
+  margin-right: 6px;
   font-size: 0.7rem;
 }
 
@@ -684,4 +684,68 @@ form {
   width: 35px;
   height: 35px;
   background-color: transparent;
+}
+
+.deposit {
+  display: flex;
+  flex-direction: column;
+  width: 477px;
+  min-height: 107px;
+  background-color: #36454f;
+  margin-top: 0;
+  margin-left: 2px;
+  border: 2px solid black;
+  border-radius: 10px 10px 10px 10px;
+  padding-left: 10px;
+  padding-top: 10px;
+  gap: 20px;
+}
+
+.depositWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  gap: 12px;
+  margin-top: -20px;
+}
+
+.depositTitle {
+  background-color: transparent;
+  color: gold;
+  margin-left: 0;
+}
+
+.depositButton {
+  width: 451px;
+  height: 40px;
+  background-color: var(--brown-color);
+  color: gold;
+  border: 2px solid black;
+  border-radius: 15px;
+  margin-top: -34px;
+  margin-left: 1px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.depositButton:hover {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.depositButton:active {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transform: translateY(2px);
+}
+
+.depositAmount {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background-color: transparent;
+  color: gold;
 }

@@ -144,12 +144,12 @@ const Home = () => {
     }
   };
 
-  // Allows only 4 digits for gold pricing & buyout input fields
+  // Allows only 5 digits for gold pricing & buyout input fields
   const handleGold = (e, setPrice) => {
     const value = e.target.value;
 
-    // Allow only digits, up to 4 digits
-    if (/^\d{0,4}$/.test(value)) {
+    // Allow only digits, up to 5 digits
+    if (/^\d{0,5}$/.test(value)) {
       setPrice(value);
     }
   };
@@ -711,6 +711,30 @@ const Home = () => {
                 />
                 <img className={styles.coin} src={copperCoin} alt="Copper" />
               </div>
+            </div>
+            <div className={styles.deposit}>
+              <div className={styles.depositWrapper}>
+                <h3 className={styles.depositTitle}>Deposit: </h3>
+                <div className={styles.depositAmount}>
+                  12345
+                  <img className={styles.coin} src={goldCoin} alt="Gold Coin" />
+                  35
+                  <img
+                    className={styles.coin}
+                    src={silverCoin}
+                    alt="Silver Coin"
+                  />
+                  12
+                  <img
+                    className={styles.coin}
+                    src={copperCoin}
+                    alt="Copper Coin"
+                  />
+                </div>
+              </div>
+              <button className={styles.depositButton} type="button">
+                Create Auction
+              </button>
             </div>
           </div>
         </div>
