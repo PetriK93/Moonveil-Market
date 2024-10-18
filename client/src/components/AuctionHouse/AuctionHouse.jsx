@@ -217,6 +217,7 @@ const Home = () => {
                   className={styles.levelRange}
                   type="text"
                   value={levelMin}
+                  autoComplete="off"
                   placeholder="Min"
                   onChange={(e) => handleLevelChange(e, setLevelMin)}
                   onBlur={() =>
@@ -234,6 +235,7 @@ const Home = () => {
                   className={styles.levelRange}
                   type="text"
                   value={levelMax}
+                  autoComplete="off"
                   placeholder="Max"
                   onChange={(e) => handleLevelChange(e, setLevelMax)}
                   onBlur={() =>
@@ -735,6 +737,34 @@ const Home = () => {
               <button className={styles.depositButton} type="button">
                 Create Auction
               </button>
+            </div>
+          </div>
+
+          <div className={styles.inventorySection}>
+            <h2 id={styles.inventoryTitle}>Inventory</h2>
+            <div className={styles.inventory}>
+              <div className={styles.inventoryGrid}>
+                <div className={styles.inventoryItem}></div>
+                <div className={styles.inventoryItem}></div>
+                <div className={styles.inventoryItem}></div>
+                <div className={styles.inventoryItem}></div>
+                <div className={styles.inventoryItem}></div>
+                <div className={styles.inventoryItem}></div>
+                <div className={styles.inventoryItem}></div>
+                <div className={styles.inventoryItem}></div>
+                <div className={styles.inventoryItem}></div>
+                <div className={styles.inventoryItem}></div>
+                <div className={styles.inventoryItem}></div>
+                <div className={styles.inventoryItem}></div>
+                <div className={styles.inventoryItem}></div>
+                <div className={styles.inventoryItem}></div>
+                <div className={styles.inventoryItem}></div>
+                <div className={styles.inventoryItem}></div>
+                <div className={styles.inventoryItem}></div>
+                <div className={styles.inventoryItem}></div>
+                <div className={styles.inventoryItem}></div>
+                <div className={styles.inventoryItem}></div>
+              </div>
             </div>
           </div>
         </div>
