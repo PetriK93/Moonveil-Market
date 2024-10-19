@@ -3,8 +3,8 @@
 
 This is the initial view of the website.
 ![Moonveil Market README](https://github.com/user-attachments/assets/e561faef-d765-4255-a4bf-d26a3f7ac3be)
-Auction house has two tabs, browse and sell. Browse section will showcase all the items that you want to buy. Sell section will let you pick an item of your choice to sell.
-The player's inventory will be shown on the right side of the sell section.
+Auction house has three tabs, "browse", "sell" and "myAuctions". "browse" section will showcase all the items that you want to buy. "sell" section will let you pick an item of your choice to sell from your inventory.
+"myAuctions" section contains a list of all the items that you have put up for sale and that you have bidded on.
 ![First two tabs](https://github.com/user-attachments/assets/7f0142c3-0ac0-47f9-9924-649b41dc1c30)
 Project is still under construction..
 
