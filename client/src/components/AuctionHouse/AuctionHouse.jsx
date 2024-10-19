@@ -19,6 +19,16 @@ import sellIcon from "../../assets/sell_icon.png";
 import goldCoin from "../../assets/gold_coin.png";
 import silverCoin from "../../assets/silver_coin.png";
 import copperCoin from "../../assets/copper_coin.png";
+import kunai from "../../assets/Weapons/1.png";
+import shuriken from "../../assets/Weapons/2.png";
+import sai from "../../assets/Weapons/4.png";
+import nunchucks from "../../assets/Weapons/7.png";
+import flail from "../../assets/Weapons/14.png";
+import claws from "../../assets/Weapons/22.png";
+import oneHandedSword1 from "../../assets/Weapons/25.png";
+import chainBoots1 from "../../assets/Armor/Boots/15.png";
+import treeRoots1 from "../../assets/Crafting_materials/2.png";
+import skull1 from "../../assets/Crafting_materials/6.png";
 
 const Home = () => {
   // useStates & UseRefs
@@ -744,26 +754,86 @@ const Home = () => {
             <h2 id={styles.inventoryTitle}>Inventory</h2>
             <div className={styles.inventory}>
               <div className={styles.inventoryGrid}>
-                <div className={styles.inventoryItem}></div>
-                <div className={styles.inventoryItem}></div>
-                <div className={styles.inventoryItem}></div>
-                <div className={styles.inventoryItem}></div>
-                <div className={styles.inventoryItem}></div>
-                <div className={styles.inventoryItem}></div>
-                <div className={styles.inventoryItem}></div>
-                <div className={styles.inventoryItem}></div>
-                <div className={styles.inventoryItem}></div>
-                <div className={styles.inventoryItem}></div>
-                <div className={styles.inventoryItem}></div>
-                <div className={styles.inventoryItem}></div>
-                <div className={styles.inventoryItem}></div>
-                <div className={styles.inventoryItem}></div>
-                <div className={styles.inventoryItem}></div>
-                <div className={styles.inventoryItem}></div>
-                <div className={styles.inventoryItem}></div>
-                <div className={styles.inventoryItem}></div>
-                <div className={styles.inventoryItem}></div>
-                <div className={styles.inventoryItem}></div>
+                <div className={styles.inventoryItemSlot}>
+                  <img
+                    className={styles.inventoryItem}
+                    src={oneHandedSword1}
+                    alt="Inventory slot 1"
+                  />
+                </div>
+                <div className={styles.inventoryItemSlot}>
+                  <img
+                    className={styles.inventoryItem}
+                    src={kunai}
+                    alt="Inventory slot 2"
+                  />
+                </div>
+                <div className={styles.inventoryItemSlot}>
+                  <img
+                    className={styles.inventoryItem}
+                    src={shuriken}
+                    alt="Inventory slot 3"
+                  />
+                </div>
+                <div className={styles.inventoryItemSlot}>
+                  <img
+                    className={styles.inventoryItem}
+                    src={sai}
+                    alt="Inventory slot 4"
+                  />
+                </div>
+                <div className={styles.inventoryItemSlot}>
+                  <img
+                    className={styles.inventoryItem}
+                    src={nunchucks}
+                    alt="Inventory slot 5"
+                  />
+                </div>
+                <div className={styles.inventoryItemSlot}>
+                  <img
+                    className={styles.inventoryItem}
+                    src={flail}
+                    alt="Inventory slot 6"
+                  />
+                </div>
+                <div className={styles.inventoryItemSlot}>
+                  <img
+                    className={styles.inventoryItem}
+                    src={claws}
+                    alt="Inventory slot 7"
+                  />
+                </div>
+                <div className={styles.inventoryItemSlot}>
+                  <img
+                    className={styles.inventoryItem}
+                    src={chainBoots1}
+                    alt="Inventory slot 8"
+                  />
+                </div>
+                <div className={styles.inventoryItemSlot}>
+                  <img
+                    className={styles.inventoryItem}
+                    src={treeRoots1}
+                    alt="Inventory slot 9"
+                  />
+                </div>
+                <div className={styles.inventoryItemSlot}>
+                  <img
+                    className={styles.inventoryItem}
+                    src={skull1}
+                    alt="Inventory slot 10"
+                  />
+                </div>
+                <div className={styles.inventoryItemSlot}></div>
+                <div className={styles.inventoryItemSlot}></div>
+                <div className={styles.inventoryItemSlot}></div>
+                <div className={styles.inventoryItemSlot}></div>
+                <div className={styles.inventoryItemSlot}></div>
+                <div className={styles.inventoryItemSlot}></div>
+                <div className={styles.inventoryItemSlot}></div>
+                <div className={styles.inventoryItemSlot}></div>
+                <div className={styles.inventoryItemSlot}></div>
+                <div className={styles.inventoryItemSlot}></div>
               </div>
             </div>
           </div>
