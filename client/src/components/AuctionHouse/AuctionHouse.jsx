@@ -41,6 +41,7 @@ const Home = () => {
   const [tab, setTab] = useState("browse");
   const [isBrowseFlashing, setIsBrowseFlashing] = useState(false);
   const [isSellFlashing, setIsSellFlashing] = useState(false);
+  const [isMyAuctionsFlashing, setIsMyAuctionsFlashing] = useState(false);
   const categorySectionRef = useRef(null);
   const [goldPrice, setGoldPrice] = useState("");
   const [silverPrice, setSilverPrice] = useState("");
@@ -142,6 +143,17 @@ const Home = () => {
     }, 500);
   };
 
+  // Toggles animation and sets "myAuctions" as the current tab
+  const handleMyAuctions = () => {
+    setIsMyAuctionsFlashing(true);
+    setTab("myAuctions");
+    setDropdown(null);
+    // Makes sure the animation has time to play out. Sync with animation.
+    setTimeout(() => {
+      setIsMyAuctionsFlashing(false);
+    }, 500);
+  };
+
   // IMPORTANT NOTE: 1 gold = 100 silver, 1 silver = 100 copper
 
   // Allows only 2 digits in the silver & copper pricing & buyout input fields
@@ -194,7 +206,8 @@ const Home = () => {
   return (
     <div id="auction-house" className={styles.container}>
       <h1>Auction House</h1>
-      {tab === "browse" ? (
+      {/* Browse section starts here! */}
+      {tab === "browse" && (
         <div className={styles.browseTab}>
           <div className={styles.classPortrait}>
             <img
@@ -625,7 +638,9 @@ const Home = () => {
             </div>
           </div>
         </div>
-      ) : (
+      )}
+      {/* Browse section ends here and sell section starts here! */}
+      {tab === "sell" && (
         <div className={styles.sellTab}>
           <div className={styles.classPortrait}>
             <img
@@ -749,7 +764,6 @@ const Home = () => {
               </button>
             </div>
           </div>
-
           <div className={styles.inventorySection}>
             <h2 id={styles.inventoryTitle}>Inventory</h2>
             <div className={styles.inventory}>
@@ -839,19 +853,41 @@ const Home = () => {
           </div>
         </div>
       )}
+      {/* Sell section ends here and myAuctions section starts here! */}
+      {tab === "myAuctions" && (
+        <div className={styles.myAuctionsTab}>
+          <div className={styles.classPortrait}>
+            <img
+              className={styles.classImg}
+              src={portrait}
+              alt="Class portrait"
+            />
+          </div>
+        </div>
+      )}
       <div className={styles.tabsContainer}>
         <button
-          className={`${styles.tab} ${isBrowseFlashing ? styles.flash : ""}`}
+          className={`${styles.tabBrowse} ${
+            isBrowseFlashing ? styles.flash : ""
+          }`}
           onClick={handleBrowse}
         >
           Browse
         </button>
         <button
-          className={`${styles.tab} ${isSellFlashing ? styles.flash : ""}`}
+          className={`${styles.tabSell} ${isSellFlashing ? styles.flash : ""}`}
           type="button"
           onClick={handleSell}
         >
           Sell
+        </button>
+        <button
+          className={`${styles.tabMyAuctions} ${
+            isMyAuctionsFlashing ? styles.flash : ""
+          }`}
+          onClick={handleMyAuctions}
+        >
+          My Auctions
         </button>
       </div>
     </div>

@@ -398,16 +398,14 @@ form {
   align-items: center;
   gap: 15px;
   text-align: center;
-  margin-left: -740px;
+  margin-left: -445px;
   margin-top: -2px;
-  width: 50px;
-  height: 40px;
   background-color: transparent;
   color: white;
   margin-bottom: 20px;
 }
 
-.tab {
+.tabBrowse {
   background-color: #36454f;
   color: gold;
   border: 2px solid black;
@@ -415,13 +413,32 @@ form {
   font-size: 0.9rem;
   cursor: pointer;
   animation-duration: 0.5s;
+  width: 100px;
 }
 
-.tab.flash.browse {
-  animation-name: flash;
+.tabSell {
+  background-color: #36454f;
+  color: gold;
+  border: 2px solid black;
+  border-radius: 0 0 10px 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  animation-duration: 0.5s;
+  width: 65px;
 }
 
-.tab.flash {
+.tabMyAuctions {
+  background-color: #36454f;
+  color: gold;
+  border: 2px solid black;
+  border-radius: 0 0 10px 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  animation-duration: 0.5s;
+  width: 148px;
+}
+
+.flash {
   animation-name: flash;
 }
 
@@ -856,4 +873,17 @@ form {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.myAuctionsTab {
+  display: flex;
+  flex-direction: row;
+  width: 836px;
+  min-height: 668px;
+  height: auto;
+  position: relative;
+  border-radius: 5px;
+  margin-top: 20px;
+  border: 2px solid black;
+  background-color: rgb(138, 137, 137);
 }
