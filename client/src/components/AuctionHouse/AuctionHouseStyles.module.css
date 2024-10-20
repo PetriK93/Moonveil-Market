@@ -404,14 +404,14 @@ form {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 487px;
-  min-height: 516px;
-  max-height: 516px;
+  width: 495px;
+  min-height: 529px;
+  max-height: 529px;
   background-color: transparent;
   border: none;
   color: white;
   margin-top: 12px;
-  margin-left: 0px;
+  margin-left: -1px;
   text-align: start;
   align-items: flex-start;
   border-radius: 5px;

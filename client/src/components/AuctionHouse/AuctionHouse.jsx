@@ -44,6 +44,7 @@ const Home = () => {
   const [isSellFlashing, setIsSellFlashing] = useState(false);
   const [isMyAuctionsFlashing, setIsMyAuctionsFlashing] = useState(false);
   const categorySectionRef = useRef(null);
+  const browseSectionRef = useRef(null);
   const [goldPrice, setGoldPrice] = useState("");
   const [silverPrice, setSilverPrice] = useState("");
   const [copperPrice, setCopperPrice] = useState("");
@@ -55,11 +56,12 @@ const Home = () => {
   // Prevents scrolling the page itself when inside the categorySection
   useEffect(() => {
     const categorySection = categorySectionRef.current;
+    const browseSection = browseSectionRef.current;
 
-    const handleScroll = (event) => {
-      const scrollTop = categorySection.scrollTop;
-      const scrollHeight = categorySection.scrollHeight;
-      const height = categorySection.clientHeight;
+    const handleScroll = (event, section) => {
+      const scrollTop = section.scrollTop;
+      const scrollHeight = section.scrollHeight;
+      const height = section.clientHeight;
       const wheelDelta = event.deltaY;
       const isScrollingDown = wheelDelta > 0;
 
@@ -76,14 +78,20 @@ const Home = () => {
       }
     };
 
+    const handleCategoryScroll = (event) =>
+      handleScroll(event, categorySection);
+    const handleBrowseScroll = (event) => handleScroll(event, browseSection);
+
     if (tab === "browse") {
-      categorySection.addEventListener("wheel", handleScroll);
+      categorySection.addEventListener("wheel", handleCategoryScroll);
+      browseSection.addEventListener("wheel", handleBrowseScroll);
     }
 
-    // Clean up the event listener when the component unmounts or tab changes
+    // Clean up the event listeners when the component unmounts or tab changes
     return () => {
       if (tab === "browse") {
-        categorySection.removeEventListener("wheel", handleScroll);
+        categorySection.removeEventListener("wheel", handleCategoryScroll);
+        browseSection.removeEventListener("wheel", handleBrowseScroll);
       }
     };
   }, [tab]);
@@ -639,7 +647,7 @@ const Home = () => {
                 )}
               </div>
             </div>
-            <div className={styles.browseSection}>
+            <div ref={browseSectionRef} className={styles.browseSection}>
               <AuctionRow />
               <AuctionRow />
               <AuctionRow />
