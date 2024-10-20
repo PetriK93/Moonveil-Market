@@ -392,6 +392,51 @@ form {
   }
 }
 
+.horizontalWrapper {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+.browseSection {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 487px;
+  min-height: 516px;
+  max-height: 516px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  margin-top: 12px;
+  margin-left: 0px;
+  text-align: start;
+  align-items: flex-start;
+  border-radius: 5px;
+  gap: 4px;
+  padding-top: 5px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  z-index: 99;
+  overflow-y: auto;
+}
+
+.browseSection::-webkit-scrollbar {
+  width: 14px;
+}
+
+.browseSection::-webkit-scrollbar-track {
+  background: #36454f;
+}
+
+.browseSection::-webkit-scrollbar-thumb {
+  background: linear-gradient(to top, #b6b6b6, #ffd700, #f5b43c);
+  border-radius: 6px;
+  border: 2px solid #36454f;
+}
+
 .tabsContainer {
   display: flex;
   flex-direction: row;

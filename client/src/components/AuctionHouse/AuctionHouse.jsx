@@ -29,6 +29,7 @@ import oneHandedSword1 from "../../assets/Weapons/25.png";
 import chainBoots1 from "../../assets/Armor/Boots/15.png";
 import treeRoots1 from "../../assets/Crafting_materials/2.png";
 import skull1 from "../../assets/Crafting_materials/6.png";
+import AuctionRow from "./AuctionRow";
 
 const Home = () => {
   // useStates & UseRefs
@@ -314,327 +315,341 @@ const Home = () => {
               </div>
             </form>
           </div>
-          <div ref={categorySectionRef} className={styles.categorySection}>
-            <div className={styles.categoryWrapper}>
-              <button
-                type="button"
-                className={styles.category}
-                onClick={() => toggleDropdown("weapons")}
-              >
-                Weapons
-                <img
-                  src={weaponsCategory}
-                  alt="Weapons category"
-                  className={styles.categoryIcon}
-                />
-              </button>
-              {dropdown === "weapons" && (
-                <div
-                  className={`${styles.dropdown} ${
-                    dropdown === "weapons" && !isAnimating
-                      ? styles.open
-                      : styles.closed
-                  }`}
+          <div className={styles.horizontalWrapper}>
+            <div ref={categorySectionRef} className={styles.categorySection}>
+              <div className={styles.categoryWrapper}>
+                <button
+                  type="button"
+                  className={styles.category}
+                  onClick={() => toggleDropdown("weapons")}
                 >
-                  <ul>
-                    <li>One-handed swords</li>
-                    <li>Two-handed swords</li>
-                    <li>One-handed maces</li>
-                    <li>Two-handed maces</li>
-                    <li>One-handed axes</li>
-                    <li>Two-handed axes</li>
-                    <li>Daggers</li>
-                    <li>Bows</li>
-                    <li>Spears</li>
-                    <li>Staves</li>
-                    <li>Fist weapons</li>
-                  </ul>
-                </div>
-              )}
+                  Weapons
+                  <img
+                    src={weaponsCategory}
+                    alt="Weapons category"
+                    className={styles.categoryIcon}
+                  />
+                </button>
+                {dropdown === "weapons" && (
+                  <div
+                    className={`${styles.dropdown} ${
+                      dropdown === "weapons" && !isAnimating
+                        ? styles.open
+                        : styles.closed
+                    }`}
+                  >
+                    <ul>
+                      <li>One-handed swords</li>
+                      <li>Two-handed swords</li>
+                      <li>One-handed maces</li>
+                      <li>Two-handed maces</li>
+                      <li>One-handed axes</li>
+                      <li>Two-handed axes</li>
+                      <li>Daggers</li>
+                      <li>Bows</li>
+                      <li>Spears</li>
+                      <li>Staves</li>
+                      <li>Fist weapons</li>
+                    </ul>
+                  </div>
+                )}
+              </div>
+              <div className={styles.categoryWrapper}>
+                <button
+                  type="button"
+                  className={styles.category}
+                  onClick={() => toggleDropdown("armor")}
+                >
+                  Armor
+                  <img
+                    src={armorCategory}
+                    alt="Armor category"
+                    className={styles.categoryIcon}
+                  />
+                </button>
+                {dropdown === "armor" && (
+                  <div
+                    className={`${styles.dropdown} ${
+                      dropdown === "armor" && !isAnimating
+                        ? styles.open
+                        : styles.closed
+                    }`}
+                  >
+                    <ul>
+                      <li>Heavy armor</li>
+                      <li>Medium armor</li>
+                      <li>Light armor</li>
+                      <li>Shields</li>
+                    </ul>
+                  </div>
+                )}
+              </div>
+              <div className={styles.categoryWrapper}>
+                <button
+                  type="button"
+                  className={styles.category}
+                  onClick={() => toggleDropdown("potions")}
+                >
+                  Potions
+                  <img
+                    src={potionsCategory}
+                    alt="Potions category"
+                    className={styles.categoryIcon}
+                  />
+                </button>
+                {dropdown === "potions" && (
+                  <div
+                    className={`${styles.dropdown} ${
+                      dropdown === "potions" && !isAnimating
+                        ? styles.open
+                        : styles.closed
+                    }`}
+                  >
+                    <ul>
+                      <li>Healing potions</li>
+                      <li>Mana potions</li>
+                      <li>Antidotes</li>
+                      <li>Strength potions</li>
+                      <li>Agility potions</li>
+                      <li>Intellect potions</li>
+                    </ul>
+                  </div>
+                )}
+              </div>
+              <div className={styles.categoryWrapper}>
+                <button
+                  type="button"
+                  className={styles.category}
+                  onClick={() => toggleDropdown("food")}
+                >
+                  Food
+                  <img
+                    src={foodCategory}
+                    alt="Food category"
+                    className={styles.categoryIcon}
+                  />
+                </button>
+                {dropdown === "food" && (
+                  <div
+                    className={`${styles.dropdown} ${
+                      dropdown === "food" && !isAnimating
+                        ? styles.open
+                        : styles.closed
+                    }`}
+                  >
+                    <ul>
+                      <li>Double XP for kills</li>
+                      <li>Double XP for crafting</li>
+                      <li>Movement speed</li>
+                      <li>Elemental resistance</li>
+                      <li>Physical resistance</li>
+                      <li>Increase health</li>
+                      <li>Increase mana</li>
+                    </ul>
+                  </div>
+                )}
+              </div>
+              <div className={styles.categoryWrapper}>
+                <button
+                  type="button"
+                  className={styles.category}
+                  onClick={() => toggleDropdown("enchantments")}
+                >
+                  Enchantments
+                  <img
+                    src={enchantmentsCategory}
+                    alt="Enchantments category"
+                    className={styles.categoryIcon}
+                  />
+                </button>
+                {dropdown === "enchantments" && (
+                  <div
+                    className={`${styles.dropdown} ${
+                      dropdown === "enchantments" && !isAnimating
+                        ? styles.open
+                        : styles.closed
+                    }`}
+                  >
+                    <ul>
+                      <li>Flamebrand</li>
+                      <li>Aquabane</li>
+                      <li>Quakefury</li>
+                      <li>Tempest edge</li>
+                      <li>Storm's wrath</li>
+                      <li>Necrotic touch</li>
+                    </ul>
+                  </div>
+                )}
+              </div>
+              <div className={styles.categoryWrapper}>
+                <button
+                  type="button"
+                  className={styles.category}
+                  onClick={() => toggleDropdown("crafting tools")}
+                >
+                  Crafting tools
+                  <img
+                    src={craftingCategory}
+                    alt="Crafting tools category"
+                    className={styles.categoryIcon}
+                  />
+                </button>
+                {dropdown === "crafting tools" && (
+                  <div
+                    className={`${styles.dropdown} ${
+                      dropdown === "crafting tools" && !isAnimating
+                        ? styles.open
+                        : styles.closed
+                    }`}
+                  >
+                    <ul>
+                      <li>Hammers</li>
+                      <li>Pickaxes</li>
+                      <li>Carving knives</li>
+                      <li>Flasks</li>
+                      <li>Skinning knives</li>
+                      <li>Shears</li>
+                      <li>Engraving tools</li>
+                      <li>Cooking pots</li>
+                    </ul>
+                  </div>
+                )}
+              </div>
+              <div className={styles.categoryWrapper}>
+                <button
+                  type="button"
+                  className={styles.category}
+                  onClick={() => toggleDropdown("crafting materials")}
+                >
+                  Crafting materials
+                  <img
+                    src={craftingMaterialsCategory}
+                    alt="Crafting materials category"
+                    className={styles.categoryIcon}
+                  />
+                </button>
+                {dropdown === "crafting materials" && (
+                  <div
+                    className={`${styles.dropdown} ${
+                      dropdown === "crafting materials" && !isAnimating
+                        ? styles.open
+                        : styles.closed
+                    }`}
+                  >
+                    <ul>
+                      <li>Ore</li>
+                      <li>Wood</li>
+                      <li>Leather</li>
+                      <li>Cloth</li>
+                      <li>Herbs</li>
+                      <li>Meat</li>
+                      <li>Vegetables & fruits</li>
+                      <li>Runestones</li>
+                    </ul>
+                  </div>
+                )}
+              </div>
+              <div className={styles.categoryWrapper}>
+                <button
+                  type="button"
+                  className={styles.category}
+                  onClick={() => toggleDropdown("recipes")}
+                >
+                  Recipes
+                  <img
+                    src={recipesCategory}
+                    alt="Recipes category"
+                    className={styles.categoryIcon}
+                  />
+                </button>
+                {dropdown === "recipes" && (
+                  <div
+                    className={`${styles.dropdown} ${
+                      dropdown === "recipes" && !isAnimating
+                        ? styles.open
+                        : styles.closed
+                    }`}
+                  >
+                    <ul>
+                      <li>Blacksmithing recipes</li>
+                      <li>Carpenting recipes</li>
+                      <li>Leatherworking recipes</li>
+                      <li>Clothing recipes</li>
+                      <li>Runecrafting recipes</li>
+                      <li>Alchemy recipes</li>
+                      <li>Cooking recipes</li>
+                    </ul>
+                  </div>
+                )}
+              </div>
+              <div className={styles.categoryWrapper}>
+                <button
+                  type="button"
+                  className={styles.category}
+                  onClick={() => toggleDropdown("bags")}
+                >
+                  Bags
+                  <img
+                    src={bagsCategory}
+                    alt="Bags category"
+                    className={styles.categoryIcon}
+                  />
+                </button>
+                {dropdown === "bags" && (
+                  <div
+                    className={`${styles.dropdown} ${
+                      dropdown === "bags" && !isAnimating
+                        ? styles.open
+                        : styles.closed
+                    }`}
+                  >
+                    <ul>
+                      <li>Regular backpacks</li>
+                      <li>Crafting bags</li>
+                    </ul>
+                  </div>
+                )}
+              </div>
+              <div className={styles.categoryWrapper}>
+                <button
+                  type="button"
+                  className={styles.category}
+                  onClick={() => toggleDropdown("quest items")}
+                >
+                  Quest items
+                  <img
+                    src={questItemsCategory}
+                    alt="Quest items category"
+                    className={styles.categoryIcon}
+                  />
+                </button>
+                {dropdown === "quest items" && (
+                  <div
+                    className={`${styles.dropdown} ${
+                      dropdown === "quest items" && !isAnimating
+                        ? styles.open
+                        : styles.closed
+                    }`}
+                  >
+                    <ul>
+                      <li>Monster & animal parts</li>
+                      <li>Collectibles</li>
+                    </ul>
+                  </div>
+                )}
+              </div>
             </div>
-            <div className={styles.categoryWrapper}>
-              <button
-                type="button"
-                className={styles.category}
-                onClick={() => toggleDropdown("armor")}
-              >
-                Armor
-                <img
-                  src={armorCategory}
-                  alt="Armor category"
-                  className={styles.categoryIcon}
-                />
-              </button>
-              {dropdown === "armor" && (
-                <div
-                  className={`${styles.dropdown} ${
-                    dropdown === "armor" && !isAnimating
-                      ? styles.open
-                      : styles.closed
-                  }`}
-                >
-                  <ul>
-                    <li>Heavy armor</li>
-                    <li>Medium armor</li>
-                    <li>Light armor</li>
-                    <li>Shields</li>
-                  </ul>
-                </div>
-              )}
-            </div>
-            <div className={styles.categoryWrapper}>
-              <button
-                type="button"
-                className={styles.category}
-                onClick={() => toggleDropdown("potions")}
-              >
-                Potions
-                <img
-                  src={potionsCategory}
-                  alt="Potions category"
-                  className={styles.categoryIcon}
-                />
-              </button>
-              {dropdown === "potions" && (
-                <div
-                  className={`${styles.dropdown} ${
-                    dropdown === "potions" && !isAnimating
-                      ? styles.open
-                      : styles.closed
-                  }`}
-                >
-                  <ul>
-                    <li>Healing potions</li>
-                    <li>Mana potions</li>
-                    <li>Antidotes</li>
-                    <li>Strength potions</li>
-                    <li>Agility potions</li>
-                    <li>Intellect potions</li>
-                  </ul>
-                </div>
-              )}
-            </div>
-            <div className={styles.categoryWrapper}>
-              <button
-                type="button"
-                className={styles.category}
-                onClick={() => toggleDropdown("food")}
-              >
-                Food
-                <img
-                  src={foodCategory}
-                  alt="Food category"
-                  className={styles.categoryIcon}
-                />
-              </button>
-              {dropdown === "food" && (
-                <div
-                  className={`${styles.dropdown} ${
-                    dropdown === "food" && !isAnimating
-                      ? styles.open
-                      : styles.closed
-                  }`}
-                >
-                  <ul>
-                    <li>Double XP for kills</li>
-                    <li>Double XP for crafting</li>
-                    <li>Movement speed</li>
-                    <li>Elemental resistance</li>
-                    <li>Physical resistance</li>
-                    <li>Increase health</li>
-                    <li>Increase mana</li>
-                  </ul>
-                </div>
-              )}
-            </div>
-            <div className={styles.categoryWrapper}>
-              <button
-                type="button"
-                className={styles.category}
-                onClick={() => toggleDropdown("enchantments")}
-              >
-                Enchantments
-                <img
-                  src={enchantmentsCategory}
-                  alt="Enchantments category"
-                  className={styles.categoryIcon}
-                />
-              </button>
-              {dropdown === "enchantments" && (
-                <div
-                  className={`${styles.dropdown} ${
-                    dropdown === "enchantments" && !isAnimating
-                      ? styles.open
-                      : styles.closed
-                  }`}
-                >
-                  <ul>
-                    <li>Flamebrand</li>
-                    <li>Aquabane</li>
-                    <li>Quakefury</li>
-                    <li>Tempest edge</li>
-                    <li>Storm's wrath</li>
-                    <li>Necrotic touch</li>
-                  </ul>
-                </div>
-              )}
-            </div>
-            <div className={styles.categoryWrapper}>
-              <button
-                type="button"
-                className={styles.category}
-                onClick={() => toggleDropdown("crafting tools")}
-              >
-                Crafting tools
-                <img
-                  src={craftingCategory}
-                  alt="Crafting tools category"
-                  className={styles.categoryIcon}
-                />
-              </button>
-              {dropdown === "crafting tools" && (
-                <div
-                  className={`${styles.dropdown} ${
-                    dropdown === "crafting tools" && !isAnimating
-                      ? styles.open
-                      : styles.closed
-                  }`}
-                >
-                  <ul>
-                    <li>Hammers</li>
-                    <li>Pickaxes</li>
-                    <li>Carving knives</li>
-                    <li>Flasks</li>
-                    <li>Skinning knives</li>
-                    <li>Shears</li>
-                    <li>Engraving tools</li>
-                    <li>Cooking pots</li>
-                  </ul>
-                </div>
-              )}
-            </div>
-            <div className={styles.categoryWrapper}>
-              <button
-                type="button"
-                className={styles.category}
-                onClick={() => toggleDropdown("crafting materials")}
-              >
-                Crafting materials
-                <img
-                  src={craftingMaterialsCategory}
-                  alt="Crafting materials category"
-                  className={styles.categoryIcon}
-                />
-              </button>
-              {dropdown === "crafting materials" && (
-                <div
-                  className={`${styles.dropdown} ${
-                    dropdown === "crafting materials" && !isAnimating
-                      ? styles.open
-                      : styles.closed
-                  }`}
-                >
-                  <ul>
-                    <li>Ore</li>
-                    <li>Wood</li>
-                    <li>Leather</li>
-                    <li>Cloth</li>
-                    <li>Herbs</li>
-                    <li>Meat</li>
-                    <li>Vegetables & fruits</li>
-                    <li>Runestones</li>
-                  </ul>
-                </div>
-              )}
-            </div>
-            <div className={styles.categoryWrapper}>
-              <button
-                type="button"
-                className={styles.category}
-                onClick={() => toggleDropdown("recipes")}
-              >
-                Recipes
-                <img
-                  src={recipesCategory}
-                  alt="Recipes category"
-                  className={styles.categoryIcon}
-                />
-              </button>
-              {dropdown === "recipes" && (
-                <div
-                  className={`${styles.dropdown} ${
-                    dropdown === "recipes" && !isAnimating
-                      ? styles.open
-                      : styles.closed
-                  }`}
-                >
-                  <ul>
-                    <li>Blacksmithing recipes</li>
-                    <li>Carpenting recipes</li>
-                    <li>Leatherworking recipes</li>
-                    <li>Clothing recipes</li>
-                    <li>Runecrafting recipes</li>
-                    <li>Alchemy recipes</li>
-                    <li>Cooking recipes</li>
-                  </ul>
-                </div>
-              )}
-            </div>
-            <div className={styles.categoryWrapper}>
-              <button
-                type="button"
-                className={styles.category}
-                onClick={() => toggleDropdown("bags")}
-              >
-                Bags
-                <img
-                  src={bagsCategory}
-                  alt="Bags category"
-                  className={styles.categoryIcon}
-                />
-              </button>
-              {dropdown === "bags" && (
-                <div
-                  className={`${styles.dropdown} ${
-                    dropdown === "bags" && !isAnimating
-                      ? styles.open
-                      : styles.closed
-                  }`}
-                >
-                  <ul>
-                    <li>Regular backpacks</li>
-                    <li>Crafting bags</li>
-                  </ul>
-                </div>
-              )}
-            </div>
-            <div className={styles.categoryWrapper}>
-              <button
-                type="button"
-                className={styles.category}
-                onClick={() => toggleDropdown("quest items")}
-              >
-                Quest items
-                <img
-                  src={questItemsCategory}
-                  alt="Quest items category"
-                  className={styles.categoryIcon}
-                />
-              </button>
-              {dropdown === "quest items" && (
-                <div
-                  className={`${styles.dropdown} ${
-                    dropdown === "quest items" && !isAnimating
-                      ? styles.open
-                      : styles.closed
-                  }`}
-                >
-                  <ul>
-                    <li>Monster & animal parts</li>
-                    <li>Collectibles</li>
-                  </ul>
-                </div>
-              )}
+            <div className={styles.browseSection}>
+              <AuctionRow />
+              <AuctionRow />
+              <AuctionRow />
+              <AuctionRow />
+              <AuctionRow />
+              <AuctionRow />
+              <AuctionRow />
+              <AuctionRow />
+              <AuctionRow />
+              <AuctionRow />
             </div>
           </div>
         </div>
