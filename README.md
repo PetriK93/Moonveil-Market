@@ -8,7 +8,8 @@ Auction house has three tabs, "browse", "sell" and "myAuctions". "browse" sectio
 ![Site 16](https://github.com/user-attachments/assets/4e6a162e-2234-4d00-bd9d-0379d176e9c0)
 Project is still under construction..
 
-I used this version of Vite to create and work on the project: "vite": "^5.4.1"
+This project was created with Vite version 5.4.1.
+Run this command inside the project directory: npm install vite@5.4.1
 
 Install the frontend dependencies to the "client" folder:
 
