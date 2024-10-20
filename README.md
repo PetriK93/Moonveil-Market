@@ -1,11 +1,12 @@
 # Moonveil-Market
- Fantasy RPG themed marketplace. Features an auction house, messaging system and profile creation to authenticate users. React & Javascript is responsible for the frontend and MySQL, Node and Express.js will be responsible for the backend.
+
+Fantasy RPG themed marketplace. Features an auction house, messaging system and profile creation to authenticate users. React & Javascript is responsible for the frontend and MySQL, Node and Express.js will be responsible for the backend.
 
 This is the initial view of the website.
 ![Moonveil Market README](https://github.com/user-attachments/assets/e561faef-d765-4255-a4bf-d26a3f7ac3be)
 Auction house has three tabs, "browse", "sell" and "myAuctions". "browse" section will showcase all the items that you want to buy. "sell" section will let you pick an item of your choice to sell from your inventory.
 "myAuctions" section contains a list of all the items that you have put up for sale and that you have bidded on.
-![Site 16](https://github.com/user-attachments/assets/4e6a162e-2234-4d00-bd9d-0379d176e9c0)
+![site 18](https://github.com/user-attachments/assets/e45cfccc-9ad6-4f2a-a52b-f21a48a1adbc)
 Project is still under construction..
 
 This project was created with Vite version 5.4.1.
