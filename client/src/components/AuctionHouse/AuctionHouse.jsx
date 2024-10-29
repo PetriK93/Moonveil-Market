@@ -886,6 +886,13 @@ const Home = () => {
               alt="Class portrait"
             />
           </div>
+          <div className={styles.auctionTopRow}>
+            <div className={styles.topFilter}>Item Name</div>
+            <div className={styles.topFilter}>Time Left</div>
+            <div className={styles.topFilter}>High Bidder</div>
+            <div className={styles.topFilter}>Current Bid</div>
+          </div>
+          <div className={styles.auctionsContainer}></div>
         </div>
       )}
       <div className={styles.tabsContainer}>
