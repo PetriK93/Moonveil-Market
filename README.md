@@ -27,6 +27,7 @@ Install the backend dependencies to the "backend" folder:
 5. "multer": "^1.4.5-lts.1",
 6. "mysql2": "^3.11.3",
 7. "socket.io": "^4.7.5"
+8. "dotenv": "^16.4.5"
 
 Once everything is installed, use cd to navigate to the client folder and then type "npm run dev" into the terminal.
 
