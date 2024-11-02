@@ -2,7 +2,7 @@
 
 Fantasy RPG themed marketplace. Features an auction house, messaging system and profile creation to authenticate users. React & Javascript is responsible for the frontend and MySQL, Node and Express.js will be responsible for the backend.
 
-This is the initial view of the website.
+Currently working on the functionality of the auction house portion of the website.
 ![AH1](https://github.com/user-attachments/assets/7319f7b6-55c4-4409-a66a-948e2facccee)
 Auction house has three tabs, "browse", "sell" and "myAuctions". "browse" section will showcase all the items that you want to buy. "sell" section will let you pick an item of your choice to sell from your inventory.
 "myAuctions" section contains a list of all the items that you have put up for sale.
