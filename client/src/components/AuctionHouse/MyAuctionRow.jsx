@@ -1,10 +1,10 @@
 import React from "react";
-import styles from "./AuctionRowStyles.module.css";
+import styles from "./MyAuctionRowStyles.module.css";
 import thunderfury from "../../assets/Weapons/35.png";
 
-const AuctionRow = () => {
+const MyAuctionRow = () => {
   return (
-    <div className={styles.auctionRow}>
+    <div className={styles.myAuctionRow}>
       <img
         className={styles.auctionRowIcon}
         src={thunderfury}
@@ -15,10 +15,9 @@ const AuctionRow = () => {
           Thunderfury: Blessed blade of the windseeker
         </div>
       </div>
-      <div className={styles.itemLvl}>60</div>
       <div className={styles.timeLeft}>24h</div>
       <div className={styles.verticalWrapper}>
-        <div className={styles.seller}>Deregon Cross</div>
+        <div className={styles.highBidder}>Sylvanas Windrunner</div>
       </div>
       <div className={styles.buyout}>Buyout</div>
       <div className={styles.currentBid}>12345</div>
@@ -27,4 +26,4 @@ const AuctionRow = () => {
   );
 };
 
-export default AuctionRow;
+export default MyAuctionRow;

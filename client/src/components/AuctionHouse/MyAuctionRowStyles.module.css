@@ -1,107 +1,97 @@
-.auctionRow {
+.myAuctionRow {
   position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
   text-align: center;
-  padding: 5px 5px;
+  padding-left: 7px;
+  padding-right: 7px;
   width: 100%;
-  height: 70px;
+  height: 85px;
   min-height: 70px;
   background-color: #36454f;
   border: 2px solid black;
   border-radius: 5px;
-  font-size: 0.6rem;
-  margin-left: -2px;
+  font-size: 0.7rem;
+  margin-top: 5px;
+  margin-bottom: 5px;
   cursor: pointer;
   transition: box-shadow 0.3s ease, transform 0.2s ease;
   user-select: none;
 }
 
-.auctionRow:hover {
-  /*box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);*/
+.myAuctionRow:hover {
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2), 0 0 3px 3px rgba(255, 215, 0, 0.6);
-  /*transform: translateY(-2px);*/
 }
 
-.auctionRow:active {
+.myAuctionRow:active {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  /*transform: translateY(2px);*/
   transform: scale(0.98);
 }
 
-.auctionRow .auctionRowIcon {
-  width: 45px;
-  height: 45px;
+.myAuctionRow .auctionRowIcon {
+  width: 60px;
+  height: 60px;
   background: transparent;
 }
 
-.auctionRow .itemName {
+.myAuctionRow .itemName {
   position: absolute;
   top: 50%;
-  left: 13%;
+  left: 9.5%;
+  background: transparent;
+  color: gold;
+  transform: translateY(-50%);
+  width: 180px;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.myAuctionRow .timeLeft {
+  position: absolute;
+  top: 50%;
+  left: 42.5%;
+  background: transparent;
+  color: gold;
+  transform: translateY(-50%);
+}
+
+.myAuctionRow .highBidder {
+  position: absolute;
+  top: 50%;
+  left: 60.5%;
   background: transparent;
   color: gold;
   transform: translateY(-50%);
   width: 120px;
-  white-space: normal; /* Allow text to wrap to the next line */
-  overflow-wrap: break-word; /* Break long words to fit within the width */
+  white-space: normal;
+  overflow-wrap: break-word;
   word-wrap: break-word;
 }
 
-.auctionRow .itemLvl {
-  position: absolute;
-  top: 50%;
-  left: 42%;
-  background: transparent;
-  color: gold;
-  transform: translateY(-50%);
-}
-
-.auctionRow .timeLeft {
-  position: absolute;
-  top: 50%;
-  left: 52%;
-  background: transparent;
-  color: gold;
-  transform: translateY(-50%);
-}
-
-.auctionRow .seller {
-  position: absolute;
-  top: 50%;
-  left: 60%;
-  background: transparent;
-  color: gold;
-  transform: translateY(-50%);
-  width: 80px;
-  white-space: normal; /* Allow text to wrap to the next line */
-  overflow-wrap: break-word; /* Break long words to fit within the width */
-  word-wrap: break-word;
-}
-
-.auctionRow .buyout {
+.myAuctionRow .buyout {
   position: absolute;
   top: 70%;
-  left: 77%;
+  left: 79.5%;
   background: transparent;
   color: gold;
   transform: translateY(-50%);
 }
 
-.auctionRow .currentBid {
+.myAuctionRow .currentBid {
   position: absolute;
   top: 30%;
-  left: 88%;
+  left: 88.5%;
   background: transparent;
   color: gold;
   transform: translateY(-50%);
 }
 
-.auctionRow .currentBuyout {
+.myAuctionRow .currentBuyout {
   position: absolute;
   top: 70%;
-  left: 88%;
+  left: 88.5%;
   background: transparent;
   color: gold;
   transform: translateY(-50%);

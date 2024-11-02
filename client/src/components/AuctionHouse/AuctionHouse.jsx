@@ -30,6 +30,7 @@ import chainBoots1 from "../../assets/Armor/Boots/15.png";
 import treeRoots1 from "../../assets/Crafting_materials/2.png";
 import skull1 from "../../assets/Crafting_materials/6.png";
 import AuctionRow from "./AuctionRow";
+import MyAuctionRow from "./MyAuctionRow";
 
 const Home = () => {
   // useStates & UseRefs
@@ -45,6 +46,7 @@ const Home = () => {
   const [isMyAuctionsFlashing, setIsMyAuctionsFlashing] = useState(false);
   const categorySectionRef = useRef(null);
   const browseSectionRef = useRef(null);
+  const myAuctionsSectionRef = useRef(null);
   const [goldPrice, setGoldPrice] = useState("");
   const [silverPrice, setSilverPrice] = useState("");
   const [copperPrice, setCopperPrice] = useState("");
@@ -57,6 +59,7 @@ const Home = () => {
   useEffect(() => {
     const categorySection = categorySectionRef.current;
     const browseSection = browseSectionRef.current;
+    const myAuctionsSection = myAuctionsSectionRef.current;
 
     const handleScroll = (event, section) => {
       const scrollTop = section.scrollTop;
@@ -81,10 +84,15 @@ const Home = () => {
     const handleCategoryScroll = (event) =>
       handleScroll(event, categorySection);
     const handleBrowseScroll = (event) => handleScroll(event, browseSection);
+    const handleMyAuctionsScroll = (event) =>
+      handleScroll(event, myAuctionsSection);
 
     if (tab === "browse") {
       categorySection.addEventListener("wheel", handleCategoryScroll);
       browseSection.addEventListener("wheel", handleBrowseScroll);
+    }
+    if (tab === "myAuctions") {
+      myAuctionsSection.addEventListener("wheel", handleMyAuctionsScroll);
     }
 
     // Clean up the event listeners when the component unmounts or tab changes
@@ -92,6 +100,9 @@ const Home = () => {
       if (tab === "browse") {
         categorySection.removeEventListener("wheel", handleCategoryScroll);
         browseSection.removeEventListener("wheel", handleBrowseScroll);
+      }
+      if (tab === "myAuctions") {
+        myAuctionsSection.removeEventListener("wheel", handleMyAuctionsScroll);
       }
     };
   }, [tab]);
@@ -905,7 +916,18 @@ const Home = () => {
             <div className={styles.topFilter}>High Bidder</div>
             <div className={styles.topFilter}>Current Bid</div>
           </div>
-          <div className={styles.auctionsContainer}></div>
+          <div ref={myAuctionsSectionRef} className={styles.auctionsContainer}>
+            <MyAuctionRow />
+            <MyAuctionRow />
+            <MyAuctionRow />
+            <MyAuctionRow />
+            <MyAuctionRow />
+            <MyAuctionRow />
+            <MyAuctionRow />
+            <MyAuctionRow />
+            <MyAuctionRow />
+            <MyAuctionRow />
+          </div>
         </div>
       )}
       <div className={styles.tabsContainer}>
