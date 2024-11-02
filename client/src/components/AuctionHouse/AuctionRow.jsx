@@ -1,19 +1,23 @@
 import React from "react";
 import styles from "./AuctionRowStyles.module.css";
-import spikyGloves from "../../assets/Weapons/20.png";
+import thunderfury from "../../assets/Weapons/35.png";
 
 const AuctionRow = () => {
   return (
     <div className={styles.auctionRow}>
       <img
         className={styles.auctionRowIcon}
-        src={spikyGloves}
+        src={thunderfury}
         alt="Auction row 1"
       />
-      <p id="itemName">Item Name</p>
-      <p id="itemLvl">1</p>
-      <p id="hoursLeft">Hours Left</p>
-      <p id="seller">Seller</p>
+      <div className={styles.verticalWrapper}>
+        <p id="itemName">Thunderfury: Blessed blade of the windseeker</p>
+      </div>
+      <p id="itemLvl">60</p>
+      <p id="timeLeft">24h</p>
+      <div className={styles.verticalWrapper}>
+        <p id="seller">Deregon</p>
+      </div>
       <p id="buyout">Buyout</p>
       <div className={styles.unitPrices}>
         <div className={styles.bidPrice}>12345</div>

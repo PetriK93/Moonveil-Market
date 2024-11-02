@@ -648,6 +648,19 @@ const Home = () => {
               </div>
             </div>
             <div ref={browseSectionRef} className={styles.browseSection}>
+              <div className={styles.browseFilters}>
+                <div className={styles.itemNameFilter}>
+                  Item<br></br>Name
+                </div>
+                <div className={styles.itemLvlFilter}>
+                  Item<br></br>Lvl
+                </div>
+                <div className={styles.timeLeftFilter}>
+                  Time<br></br>Left
+                </div>
+                <div className={styles.sellerFilter}>Seller</div>
+                <div className={styles.currentBidFilter}>Current Bid</div>
+              </div>
               <AuctionRow />
               <AuctionRow />
               <AuctionRow />

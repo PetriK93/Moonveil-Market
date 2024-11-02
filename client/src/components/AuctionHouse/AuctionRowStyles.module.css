@@ -9,7 +9,7 @@
   background-color: #36454f;
   border: 2px solid black;
   border-radius: 5px;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   margin-left: -2px;
   cursor: pointer;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
@@ -30,6 +30,11 @@
   width: 45px;
   height: 45px;
   background: transparent;
+}
+
+.verticalWrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 .auctionRow p {
