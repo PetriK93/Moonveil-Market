@@ -10,7 +10,7 @@
   margin-top: 20px;
 }
 
-input {
+.container input {
   width: 810px;
   height: 50px;
   margin-top: 20px;
@@ -23,12 +23,12 @@ input {
   font-size: 1.2rem;
 }
 
-input:focus {
+.container input:focus {
   outline: none;
   border: 2px solid var(--brown-color);
 }
 
-.inputIcon {
+.container .inputIcon {
   position: relative;
   right: -380px;
   top: -24px;

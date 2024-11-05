@@ -28,3 +28,15 @@ body {
   font-weight: normal;
   font-style: normal;
 }
+
+.sectionTitle::after {
+  content: "";
+  display: block;
+  width: 110%;
+  height: 3px;
+  background-color: var(--brown-color);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+}

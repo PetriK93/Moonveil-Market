@@ -5,12 +5,14 @@ import Profile from "./components/Profile/Profile";
 import AuctionHouse from "./components/AuctionHouse/AuctionHouse";
 import SearchBar from "./components/SearchBar/SearchBar";
 import CategoryList from "./components/Categories/Categories";
+import Login from "./components/LogIn/Login";
 
 function App() {
   return (
     <div>
       <NavBar />
       <Routes>
+        <Route path="/log-in" element={<Login />} />
         <Route
           path="/"
           element={

@@ -225,7 +225,7 @@ const Home = () => {
 
   return (
     <div id="auction-house" className={styles.container}>
-      <h1>Auction House</h1>
+      <h1 className="sectionTitle">Auction House</h1>
       {/* Browse section starts here! */}
       {tab === "browse" && (
         <div className={styles.browseTab}>
