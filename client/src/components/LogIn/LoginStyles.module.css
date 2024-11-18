@@ -32,17 +32,6 @@
   padding-top: 70px;
 }
 
-.rightContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  width: 50%;
-  height: 100%;
-  background: var(--brown-color);
-  border-radius: 0 25px 25px 0;
-}
-
 .leftContainer h1 {
   background-color: transparent;
   font-size: 1.5rem;
@@ -102,16 +91,24 @@
   border: 2px solid black;
 }
 
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  background: transparent;
+  gap: 20px;
+}
+
 .loginButton {
   text-align: center;
   border-radius: 25px;
-  border: 2px solid black;
-  width: 150px;
+  border: 1px solid black;
+  width: 100px;
   height: 50px;
   color: white;
   background: var(--brown-color);
   cursor: pointer;
   transition: transform 0.2s ease;
+  margin-bottom: 20px;
 }
 
 .loginButton:hover {
@@ -120,4 +117,47 @@
 
 .loginButton:active {
   transform: scale(1);
+}
+
+.signUpButton {
+  text-align: center;
+  border-radius: 25px;
+  border: 1px solid black;
+  width: 100px;
+  height: 50px;
+  color: white;
+  background: var(--brown-color);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.signUpButton:hover {
+  transform: scale(1.1);
+}
+
+.signUpButton:active {
+  transform: scale(1);
+}
+
+.rightContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 50%;
+  height: 100%;
+  background: var(--brown-color);
+  border-radius: 0 25px 25px 0;
+  overflow: hidden;
+}
+
+.rightContainer img {
+  width: 450px;
+  height: 450px;
+  position: absolute;
+  bottom: -2%;
+  left: 50%;
+  transform: translateX(-53%);
+  background: transparent;
 }

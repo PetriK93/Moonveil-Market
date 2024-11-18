@@ -1,0 +1,107 @@
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 800px;
+  background-color: white;
+  outline: 2px solid black;
+  border-radius: 20px;
+}
+
+.innerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 450px;
+  height: 750px;
+  background-color: rgb(135, 206, 250);
+  border-radius: 20px;
+}
+
+.createProfileIcon {
+  width: 250px;
+  height: 250px;
+  background: transparent;
+  margin-left: 40px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.createAccountTitle {
+  font-size: 1.5rem;
+  color: black;
+  margin-bottom: 30px;
+  background: transparent;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: transparent;
+}
+
+.innerContainer input {
+  width: 400px;
+  height: 50px;
+  background-color: white;
+  border-radius: 20px;
+  color: black;
+  border: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 1rem;
+}
+
+.innerContainer input:focus {
+  outline: none;
+  border: 2px solid black;
+}
+
+.createPasswordContainer {
+  position: relative;
+  background: transparent;
+}
+
+.confirmPasswordContainer {
+  position: relative;
+  background: transparent;
+}
+
+.createPasswordContainer img,
+.confirmPasswordContainer img {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 50%;
+  left: 90%;
+  transform: translateY(-50%);
+  background: transparent;
+  cursor: pointer;
+}
+
+.createAccountButton {
+  width: 200px;
+  height: 50px;
+  background-color: rgb(47, 79, 79);
+  color: white;
+  border-radius: 20px;
+  margin-top: 30px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.createAccountButton:hover {
+  transform: scale(1.1);
+  color: gold;
+}
+
+.createAccountButton:active {
+  transform: scale(1);
+}

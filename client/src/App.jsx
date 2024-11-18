@@ -6,13 +6,22 @@ import AuctionHouse from "./components/AuctionHouse/AuctionHouse";
 import SearchBar from "./components/SearchBar/SearchBar";
 import CategoryList from "./components/Categories/Categories";
 import Login from "./components/LogIn/Login";
+import SignUp from "./components/SignUp/SignUp";
 
 function App() {
   return (
     <div>
       <NavBar />
       <Routes>
-        <Route path="/log-in" element={<Login />} />
+        <Route
+          path="/log-in"
+          element={
+            <>
+              <Login />
+              <SignUp />
+            </>
+          }
+        />
         <Route
           path="/"
           element={
