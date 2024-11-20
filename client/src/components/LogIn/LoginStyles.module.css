@@ -113,6 +113,7 @@
 
 .loginButton:hover {
   transform: scale(1.1);
+  color: gold;
 }
 
 .loginButton:active {
@@ -133,6 +134,7 @@
 
 .signUpButton:hover {
   transform: scale(1.1);
+  color: gold;
 }
 
 .signUpButton:active {

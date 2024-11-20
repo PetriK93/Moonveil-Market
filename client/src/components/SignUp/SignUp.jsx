@@ -3,14 +3,34 @@ import { useState } from "react";
 import showIcon from "../../assets/show_icon.png";
 import hideIcon from "../../assets/hide_icon.png";
 import createProfileIcon from "../../assets/create_profile_icon.png";
+import closeIcon from "../../assets/close_icon.png";
 
-const SignUp = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const visibleIcon = isVisible === false ? hideIcon : showIcon;
+const SignUp = ({ onClose }) => {
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
+    useState(false);
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const passwordIcon = isPasswordVisible ? showIcon : hideIcon;
+  const confirmPasswordIcon = isConfirmPasswordVisible ? showIcon : hideIcon;
+
+  const handlePasswordChange = (e) => setPassword(e.target.value);
+  const handleConfirmPasswordChange = (e) => setConfirmPassword(e.target.value);
+  const isPasswordMatch = password === confirmPassword;
 
   return (
     <div className={styles.container}>
       <div className={styles.innerContainer}>
+        <img
+          className={styles.closeIcon}
+          src={closeIcon}
+          alt="Close window icon"
+          onClick={() => {
+            console.log("Close icon clicked");
+            onClose();
+          }}
+        />
         <img
           className={styles.createProfileIcon}
           src={createProfileIcon}
@@ -28,28 +48,44 @@ const SignUp = () => {
           />
           <div className={styles.createPasswordContainer}>
             <input
-              type="text"
+              type={isPasswordVisible ? "text" : "password"}
               placeholder="Password"
+              value={password}
+              onChange={handlePasswordChange}
               autoCorrect="off"
               autoCapitalize="off"
               spellCheck="false"
               required
             />
-            <img src={visibleIcon} alt="Password visibility icon" />
+            <img
+              src={passwordIcon}
+              alt="Password visibility icon"
+              onClick={() => setIsPasswordVisible((prev) => !prev)}
+            />
           </div>
           <div className={styles.confirmPasswordContainer}>
             <input
-              type="text"
+              type={isConfirmPasswordVisible ? "text" : "password"}
               placeholder="Confirm password"
+              value={confirmPassword}
+              onChange={handleConfirmPasswordChange}
               autoCorrect="off"
               autoCapitalize="off"
               spellCheck="false"
               required
             />
-            <img src={visibleIcon} alt="Password visibility icon" />
+            <img
+              src={confirmPasswordIcon}
+              alt="Password visibility icon"
+              onClick={() => setIsConfirmPasswordVisible((prev) => !prev)}
+            />
           </div>
         </div>
-        <button className={styles.createAccountButton} type="button">
+        <button
+          className={styles.createAccountButton}
+          type="button"
+          disabled={!isPasswordMatch}
+        >
           Create Account
         </button>
       </div>

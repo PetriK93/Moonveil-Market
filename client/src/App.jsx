@@ -6,7 +6,6 @@ import AuctionHouse from "./components/AuctionHouse/AuctionHouse";
 import SearchBar from "./components/SearchBar/SearchBar";
 import CategoryList from "./components/Categories/Categories";
 import Login from "./components/LogIn/Login";
-import SignUp from "./components/SignUp/SignUp";
 
 function App() {
   return (
@@ -18,7 +17,6 @@ function App() {
           element={
             <>
               <Login />
-              <SignUp />
             </>
           }
         />

@@ -1,9 +1,23 @@
+import { useState } from "react";
 import styles from "./LoginStyles.module.css";
 import usernameIcon from "../../assets/username_icon.png";
 import passwordIcon from "../../assets/password_icon.png";
 import logInImg from "../../assets/log_in_img.png";
+import SignUp from "../SignUp/SignUp";
 
 const Login = () => {
+  const [isCreateVisible, setIsCreateVisible] = useState(false);
+
+  const handleOpen = () => {
+    console.log("Opening Sign Up");
+    setIsCreateVisible(true);
+  };
+
+  const handleClose = () => {
+    console.log("Closing Sign Up");
+    setIsCreateVisible(false);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.logInContainer}>
@@ -34,7 +48,11 @@ const Login = () => {
             <button type="button" className={styles.loginButton}>
               Login
             </button>
-            <button type="button" className={styles.signUpButton}>
+            <button
+              onClick={handleOpen}
+              type="button"
+              className={styles.signUpButton}
+            >
               Sign Up
             </button>
           </div>
@@ -43,6 +61,7 @@ const Login = () => {
           <img src={logInImg} alt="Animated character" />
         </div>
       </div>
+      {isCreateVisible && <SignUp onClose={handleClose} />}
     </div>
   );
 };

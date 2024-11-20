@@ -2,7 +2,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,6 +12,20 @@
   background-color: white;
   outline: 2px solid black;
   border-radius: 20px;
+  overflow: hidden;
+  animation: growContainer 0.5s ease-out forwards;
+  transform-origin: bottom left;
+}
+
+@keyframes growContainer {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
 }
 
 .innerContainer {
@@ -22,6 +36,16 @@
   height: 750px;
   background-color: rgb(135, 206, 250);
   border-radius: 20px;
+}
+
+.closeIcon {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 4%;
+  right: 7%;
+  background: transparent;
+  cursor: pointer;
 }
 
 .createProfileIcon {
@@ -55,7 +79,7 @@
   color: black;
   border: none;
   padding-left: 10px;
-  padding-right: 10px;
+  padding-right: 50px;
   font-size: 1rem;
 }
 
@@ -89,12 +113,13 @@
 .createAccountButton {
   width: 200px;
   height: 50px;
-  background-color: rgb(47, 79, 79);
+  background-color: #2f4f4f;
   color: white;
   border-radius: 20px;
   margin-top: 30px;
   cursor: pointer;
   transition: transform 0.2s ease;
+  border: 1px solid black;
 }
 
 .createAccountButton:hover {
