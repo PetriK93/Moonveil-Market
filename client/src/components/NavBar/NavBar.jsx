@@ -8,17 +8,14 @@ const NavBar = () => {
     <div className={styles.container}>
       <header>
         <nav id="navbar">
-          <Link to="/">
+          <Link to="/auction-house">
             <div className={styles.imageWrapper}>
               <img src={brandLogo} alt="Brand logo" />
             </div>
           </Link>
           <ul>
             <li>
-              <Link to="/">Home Page</Link>
-            </li>
-            <li>
-              <Link to="/messages">Messages</Link>
+              <Link to="/auction-house">Auction House</Link>
             </li>
             <li>
               <Link to="/my-profile">Profile</Link>

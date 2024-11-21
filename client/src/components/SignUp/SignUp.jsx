@@ -46,6 +46,14 @@ const SignUp = ({ onClose }) => {
             spellCheck="false"
             required
           />
+          <input
+            type="text"
+            placeholder="Username"
+            autoCorrect="off"
+            autoCapitalize="off"
+            spellCheck="false"
+            required
+          />
           <div className={styles.createPasswordContainer}>
             <input
               type={isPasswordVisible ? "text" : "password"}

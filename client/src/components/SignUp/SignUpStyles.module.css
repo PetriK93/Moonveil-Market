@@ -46,6 +46,11 @@
   right: 7%;
   background: transparent;
   cursor: pointer;
+  border-radius: 100%;
+}
+
+.closeIcon:hover {
+  background-color: white;
 }
 
 .createProfileIcon {
@@ -60,7 +65,7 @@
 .createAccountTitle {
   font-size: 1.5rem;
   color: black;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   background: transparent;
 }
 
@@ -116,7 +121,7 @@
   background-color: #2f4f4f;
   color: white;
   border-radius: 20px;
-  margin-top: 30px;
+  margin-top: 15px;
   cursor: pointer;
   transition: transform 0.2s ease;
   border: 1px solid black;
