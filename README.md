@@ -1,6 +1,6 @@
 # Moonveil-Market
 
-Fantasy RPG themed marketplace. Features an auction house, messaging system and profile creation to authenticate users. React & Javascript is responsible for the frontend and MySQL, Node and Express.js will be responsible for the backend.
+Fantasy RPG themed marketplace. Features an auction house and profile creation to authenticate users. React with Javascript is responsible for the frontend and MySQL, Node and Express will be responsible for the backend.
 
 Currently working on the functionality of the auction house portion of the website.
 ![AH1](https://github.com/user-attachments/assets/7319f7b6-55c4-4409-a66a-948e2facccee)
