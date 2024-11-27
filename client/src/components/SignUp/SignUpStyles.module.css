@@ -93,6 +93,10 @@
   border: 2px solid black;
 }
 
+.inputContainer .inputTop {
+  padding-right: 17px;
+}
+
 .createPasswordContainer {
   position: relative;
   background: transparent;

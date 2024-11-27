@@ -32,16 +32,18 @@ const Login = () => {
               autoCorrect="off"
               autoCapitalize="off"
               spellCheck="false"
+              required
             />
           </div>
           <div className={styles.passwordContainer}>
             <img src={passwordIcon} alt="Password icon" />
             <input
-              type="text"
+              type="password"
               placeholder="Password"
               autoCorrect="off"
               autoCapitalize="off"
               spellCheck="false"
+              required
             />
           </div>
           <div className={styles.buttonContainer}>

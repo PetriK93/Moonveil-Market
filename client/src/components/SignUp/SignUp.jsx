@@ -39,6 +39,7 @@ const SignUp = ({ onClose }) => {
         <h1 className={styles.createAccountTitle}>Create Account</h1>
         <div className={styles.inputContainer}>
           <input
+            className={styles.inputTop}
             type="email"
             placeholder="Email address"
             autoCorrect="off"
@@ -47,6 +48,7 @@ const SignUp = ({ onClose }) => {
             required
           />
           <input
+            className={styles.inputTop}
             type="text"
             placeholder="Username"
             autoCorrect="off"
