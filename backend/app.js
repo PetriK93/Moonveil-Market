@@ -1,9 +1,17 @@
 import express from "express";
 import connectToDatabase from "./db.js";
+import authRoutes from "./routes/authRoutes.js"; // Import your routes
+import dotenv from "dotenv";
+
+// Load environment variables from .env file
+dotenv.config();
 
 const app = express();
+
+// Middleware to parse JSON requests
 app.use(express.json());
 
+// Database connection
 const startServer = async () => {
   try {
     const connection = await connectToDatabase();
@@ -14,17 +22,12 @@ const startServer = async () => {
       res.send("Welcome to the API!");
     });
 
-    // Example route that might interact with the database
-    app.get("/users", async (req, res) => {
-      try {
-        const [results] = await connection.query("SELECT * FROM users");
-        res.json(results);
-      } catch (err) {
-        console.error("Error retrieving users:", err);
-        res.status(500).json({ error: "Error retrieving users" });
-      }
-    });
+    // Use the imported routes (authRoutes, etc.)
+    app.use("/api/auth", authRoutes); // This will handle all routes starting with /api/auth
 
+    // You can add more route groups or controllers as needed
+
+    // Start the server
     const PORT = process.env.PORT || 3000;
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);

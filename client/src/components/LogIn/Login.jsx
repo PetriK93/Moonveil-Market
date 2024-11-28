@@ -27,8 +27,8 @@ const Login = () => {
           <div className={styles.usernameContainer}>
             <img src={usernameIcon} alt="Username icon" />
             <input
-              type="text"
-              placeholder="Username"
+              type="email"
+              placeholder="Email"
               autoCorrect="off"
               autoCapitalize="off"
               spellCheck="false"
