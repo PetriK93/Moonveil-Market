@@ -1,0 +1,16 @@
+{
+  "name": "moonveil-market",
+  "version": "1.0.0",
+  "description": "Fantasy RPG themed marketplace. Features an auction house and profile creation to authenticate users. React with Javascript is responsible for the frontend and MySQL, Node and Express will be responsible for the backend.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix client\" \"npm run dev --prefix backend\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}

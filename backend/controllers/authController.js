@@ -2,24 +2,27 @@ import bcrypt from "bcrypt";
 import connectToDatabase from "../db.js";
 import jwt from "jsonwebtoken";
 
-// Register function (already in your file)
-export async function register(req, res) {
-  const { username, email, password } = req.body;
+// Register function
+export const register = async (req, res) => {
+  const { email, username, password } = req.body;
 
   try {
-    // Hash the password
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const pool = await connectToDatabase();
 
-    // Insert user into the database
-    const query =
-      "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
-    await connectToDatabase.execute(query, [username, email, hashedPassword]);
+    // Use the pool to execute queries
+    const [rows, fields] = await pool.execute(
+      "INSERT INTO users (email, username, password) VALUES (?, ?, ?)",
+      [email, username, password]
+    );
 
-    res.status(201).send("User registered successfully");
+    res.status(201).json({ message: "User registered successfully" });
   } catch (err) {
-    res.status(500).send("Error registering user");
+    console.error("Error registering user:", err);
+    res
+      .status(500)
+      .json({ error: "Error registering user. Please try again." });
   }
-}
+};
 
 // Login function
 export async function login(req, res) {

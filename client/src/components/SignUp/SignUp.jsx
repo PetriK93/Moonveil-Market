@@ -1,3 +1,4 @@
+import axios from "axios";
 import styles from "./SignUpStyles.module.css";
 import { useState } from "react";
 import showIcon from "../../assets/show_icon.png";
@@ -11,13 +12,49 @@ const SignUp = ({ onClose }) => {
     useState(false);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const passwordIcon = isPasswordVisible ? showIcon : hideIcon;
   const confirmPasswordIcon = isConfirmPasswordVisible ? showIcon : hideIcon;
 
+  const handleEmailChange = (e) => setEmail(e.target.value);
+  const handleUsernameChange = (e) => setUsername(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
   const handleConfirmPasswordChange = (e) => setConfirmPassword(e.target.value);
+
   const isPasswordMatch = password === confirmPassword;
+
+  // Function to handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent default form submission
+    console.log("HandleSubmit function triggered");
+    setErrorMessage(""); // Reset any previous error
+
+    console.log("Password:", password);
+    console.log("Confirm Password:", confirmPassword);
+    console.log("Is Password Match:", isPasswordMatch);
+
+    if (!isPasswordMatch) {
+      alert("Passwords do not match");
+      return; // Exit early
+    }
+
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/auth/register",
+        { email, username, password }
+      );
+      console.log("Registration successful:", response.data);
+      onClose();
+    } catch (err) {
+      console.error("Error registering user:", err);
+      setErrorMessage(
+        err.response?.data?.error || "Error registering user. Please try again."
+      );
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -42,6 +79,8 @@ const SignUp = ({ onClose }) => {
             className={styles.inputTop}
             type="email"
             placeholder="Email address"
+            value={email}
+            onChange={handleEmailChange}
             autoCorrect="off"
             autoCapitalize="off"
             spellCheck="false"
@@ -51,6 +90,8 @@ const SignUp = ({ onClose }) => {
             className={styles.inputTop}
             type="text"
             placeholder="Username"
+            value={username}
+            onChange={handleUsernameChange}
             autoCorrect="off"
             autoCapitalize="off"
             spellCheck="false"
@@ -93,8 +134,8 @@ const SignUp = ({ onClose }) => {
         </div>
         <button
           className={styles.createAccountButton}
-          type="button"
-          disabled={!isPasswordMatch}
+          type="submit"
+          onClick={handleSubmit}
         >
           Create Account
         </button>
