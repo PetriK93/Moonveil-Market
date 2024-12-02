@@ -28,6 +28,7 @@ const SignUp = ({ onClose }) => {
 
   // Function to handle form submission
   const handleSubmit = async (e) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     e.preventDefault(); // Prevent default form submission
     console.log("HandleSubmit function triggered");
     setErrorMessage(""); // Reset any previous error
@@ -36,9 +37,25 @@ const SignUp = ({ onClose }) => {
     console.log("Confirm Password:", confirmPassword);
     console.log("Is Password Match:", isPasswordMatch);
 
+    // Input validation section
+    if (!emailRegex.test(email)) {
+      alert("Please enter a valid email address");
+      return;
+    }
+
+    if (password.length < 5) {
+      alert("Password needs to be at least 5 characters");
+      return;
+    }
+
     if (!isPasswordMatch) {
       alert("Passwords do not match");
-      return; // Exit early
+      return;
+    }
+
+    if (username.length < 5) {
+      alert("Username needs to be at least 5 characters");
+      return;
     }
 
     try {

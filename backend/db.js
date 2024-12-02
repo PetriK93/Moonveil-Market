@@ -13,13 +13,13 @@ const connectToDatabase = async () => {
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
       port: Number(process.env.DB_PORT),
-      waitForConnections: true, // Ensure connections are managed correctly
-      connectionLimit: 10, // Number of connections to the pool
-      queueLimit: 0, // Unlimited queue limit
+      waitForConnections: true,
+      connectionLimit: 10,
+      queueLimit: 0,
     });
 
     console.log("Connected to the database pool");
-    return pool; // Return the pool to use in queries
+    return pool;
   } catch (err) {
     console.error("Database connection failed:", err);
     throw err;

@@ -1,11 +1,11 @@
 import express from "express";
 import connectToDatabase from "./db.js";
-import authRoutes from "./routes/authRoutes.js"; // Import your routes
-import dotenv from "dotenv";
+import authRoutes from "./routes/authRoutes.js";
+import { config } from "dotenv";
 import cors from "cors";
 
 // Load environment variables from .env file
-dotenv.config();
+config();
 
 const app = express();
 app.use(cors());
