@@ -30,6 +30,17 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
   const { email, password } = req.body;
 
+  // Input validation
+  if (!email || !password) {
+    alert("Both email and password is required to sign in");
+    return res.status(400).json({ error: "Email and password are required" });
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return res.status(400).json({ error: "Invalid email format" });
+  }
+
   try {
     const pool = await connectToDatabase();
 
@@ -53,12 +64,23 @@ export const login = async (req, res) => {
 
     // Generate JWT token
     const token = jwt.sign(
-      { id: user.id, email: user.email },
+      { id: user.user_id, email: user.email, role: user.role },
       process.env.JWT_SECRET,
       { expiresIn: "1h" }
     );
 
-    res.status(200).json({ message: "Login successful", token });
+    // Generate a refresh token
+    const refreshToken = jwt.sign(
+      { id: user.user_id, email: user.email, role: user.role },
+      process.env.JWT_REFRESH_SECRET,
+      { expiresIn: "7d" }
+    );
+
+    res.status(200).json({
+      message: "Login successful",
+      token,
+      refreshToken,
+    });
   } catch (err) {
     console.error("Error logging in user:", err);
     res.status(500).json({ error: "An error occurred while logging in." });

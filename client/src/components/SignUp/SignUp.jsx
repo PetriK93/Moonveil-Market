@@ -14,7 +14,6 @@ const SignUp = ({ onClose }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
 
   const passwordIcon = isPasswordVisible ? showIcon : hideIcon;
   const confirmPasswordIcon = isConfirmPasswordVisible ? showIcon : hideIcon;
@@ -31,7 +30,6 @@ const SignUp = ({ onClose }) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     e.preventDefault(); // Prevent default form submission
     console.log("HandleSubmit function triggered");
-    setErrorMessage(""); // Reset any previous error
 
     console.log("Password:", password);
     console.log("Confirm Password:", confirmPassword);
@@ -67,9 +65,6 @@ const SignUp = ({ onClose }) => {
       onClose();
     } catch (err) {
       console.error("Error registering user:", err);
-      setErrorMessage(
-        err.response?.data?.error || "Error registering user. Please try again."
-      );
     }
   };
 
