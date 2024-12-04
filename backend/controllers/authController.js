@@ -9,10 +9,12 @@ export const register = async (req, res) => {
   try {
     const pool = await connectToDatabase();
 
-    // Use the pool to execute queries
-    const [rows, fields] = await pool.execute(
+    // Hash the password before saving it to the database
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    await pool.execute(
       "INSERT INTO users (email, username, password) VALUES (?, ?, ?)",
-      [email, username, password]
+      [email, username, hashedPassword]
     );
 
     res.status(201).json({ message: "User registered successfully" });
@@ -20,41 +22,45 @@ export const register = async (req, res) => {
     console.error("Error registering user:", err);
     res
       .status(500)
-      .json({ error: "Error registering user. Please try again." });
+      .json({ error: "An error occurred while registering the user." });
   }
 };
 
 // Login function
-export async function login(req, res) {
+export const login = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    // Check if user exists (using email)
-    const query = "SELECT * FROM users WHERE email = ?";
-    const [user] = await connectToDatabase.execute(query, [email]);
+    const pool = await connectToDatabase();
 
-    if (!user) {
-      return res.status(404).send("User not found");
+    // Check if the user exists
+    const [rows] = await pool.execute("SELECT * FROM users WHERE email = ?", [
+      email,
+    ]);
+
+    if (rows.length === 0) {
+      return res.status(404).json({ error: "User not found" });
     }
 
-    // Check if password matches
+    const user = rows[0];
+
+    // Verify the password
     const passwordMatch = await bcrypt.compare(password, user.password);
 
     if (!passwordMatch) {
-      return res.status(400).send("Invalid password");
+      return res.status(400).json({ error: "Invalid password" });
     }
 
     // Generate JWT token
     const token = jwt.sign(
       { id: user.id, email: user.email },
       process.env.JWT_SECRET,
-      {
-        expiresIn: "1h",
-      }
+      { expiresIn: "1h" }
     );
 
     res.status(200).json({ message: "Login successful", token });
   } catch (err) {
-    res.status(500).send("Error logging in user");
+    console.error("Error logging in user:", err);
+    res.status(500).json({ error: "An error occurred while logging in." });
   }
-}
+};
