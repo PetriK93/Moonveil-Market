@@ -32,7 +32,6 @@ export const login = async (req, res) => {
 
   // Input validation
   if (!email || !password) {
-    alert("Both email and password is required to sign in");
     return res.status(400).json({ error: "Email and password are required" });
   }
 
@@ -50,7 +49,7 @@ export const login = async (req, res) => {
     ]);
 
     if (rows.length === 0) {
-      return res.status(404).json({ error: "User not found" });
+      return res.status(404).json({ error: "Email is not registered yet" });
     }
 
     const user = rows[0];

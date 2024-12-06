@@ -28,9 +28,9 @@ const SignUp = ({ onClose }) => {
   // Function to handle form submission
   const handleSubmit = async (e) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    e.preventDefault(); // Prevent default form submission
     console.log("HandleSubmit function triggered");
 
+    console.log("Email", email);
     console.log("Password:", password);
     console.log("Confirm Password:", confirmPassword);
     console.log("Is Password Match:", isPasswordMatch);
@@ -146,7 +146,7 @@ const SignUp = ({ onClose }) => {
         </div>
         <button
           className={styles.createAccountButton}
-          type="submit"
+          type="button"
           onClick={handleSubmit}
         >
           Create Account

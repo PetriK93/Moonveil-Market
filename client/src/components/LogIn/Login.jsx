@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import styles from "./LoginStyles.module.css";
 import usernameIcon from "../../assets/username_icon.png";
@@ -7,6 +8,70 @@ import SignUp from "../SignUp/SignUp";
 
 const Login = () => {
   const [isCreateVisible, setIsCreateVisible] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleEmailChange = (e) => setEmail(e.target.value);
+  const handlePasswordChange = (e) => setPassword(e.target.value);
+
+  // Login function
+  const handleLogin = async (e) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    console.log("HandleLogin function triggered");
+
+    // Log the input values for debugging
+    console.log("Email:", email);
+    console.log("Password:", password);
+
+    // Input validation section
+    if (!email || email.trim().length === 0) {
+      alert("Please enter your email.");
+      return;
+    }
+
+    if (!email || !emailRegex.test(email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    if (!password || password.trim().length === 0) {
+      alert("Please enter your password.");
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/auth/log-in",
+        {
+          email,
+          password,
+        }
+      );
+
+      // Success message or actions
+      alert("Login successful!");
+      console.log("Login successful:", response.data);
+
+      // Example: Save token to localStorage and redirect
+      localStorage.setItem("token", response.data.token);
+      window.location.href = "/auction-house"; // Redirect to the main page
+    } catch (err) {
+      // Handle specific error responses from the server
+      if (err.response) {
+        console.error("Server responded with error:", err.response.data);
+        alert(
+          err.response.data.error || "An error occurred. Please try again."
+        );
+      } else if (err.request) {
+        console.error("No response received:", err.request);
+        alert("Unable to connect to the server. Please check your network.");
+      } else {
+        console.error("Server responded with:", err.response);
+        console.error("Unexpected error:", err.message);
+        alert("An unexpected error occurred. Please try again later.");
+      }
+    }
+  };
 
   const handleOpen = () => {
     console.log("Opening Sign Up");
@@ -29,6 +94,8 @@ const Login = () => {
             <input
               type="email"
               placeholder="Email"
+              value={email}
+              onChange={handleEmailChange}
               autoCorrect="off"
               autoCapitalize="off"
               spellCheck="false"
@@ -40,6 +107,8 @@ const Login = () => {
             <input
               type="password"
               placeholder="Password"
+              value={password}
+              onChange={handlePasswordChange}
               autoCorrect="off"
               autoCapitalize="off"
               spellCheck="false"
@@ -47,7 +116,11 @@ const Login = () => {
             />
           </div>
           <div className={styles.buttonContainer}>
-            <button type="button" className={styles.loginButton}>
+            <button
+              type="button"
+              className={styles.loginButton}
+              onClick={handleLogin}
+            >
               Login
             </button>
             <button
