@@ -1,29 +1,29 @@
 import express from "express";
-import { register, login } from "../controllers/authController.js";
-import verifyToken from "../middleware/authMiddleware.js";
+import { register, login, logout } from "../controllers/authController.js";
+import verifyToken from "../middleware/verifyTokenMiddleware.js";
+import refreshAccessToken from "../middleware/refreshTokenMiddleware.js";
+import checkTokenExpiration from "../middleware/checkTokenExpiration.js";
 
 const router = express.Router();
 
 // Public routes
 router.post("/register", register);
 router.post("/log-in", login);
-router.post("/log-out", (req, res) => {
-  // Clear the refresh token cookie
-  res.clearCookie("refreshToken", {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
-  });
-
-  res.status(200).send("Logged out successfully");
-});
+router.post("/log-out", logout);
+router.post("/refresh-token", refreshAccessToken);
+router.post("/check-token-expiration", checkTokenExpiration);
 
 // Protected routes
 router.get("/profile", verifyToken, (req, res) => {
-  res.send("User profile data");
+  res.status(200).json({ message: "User profile data", user: req.user });
 });
 router.get("/auction-house", verifyToken, (req, res) => {
-  res.send("Auction house page");
+  res.status(200).json({
+    message: "Auction house data",
+    auctionHouse: {
+      /* auction data here */
+    },
+  });
 });
 
 export default router;

@@ -83,13 +83,55 @@ export const login = async (req, res) => {
       { expiresIn: "7d" }
     );
 
+    // Set the access token as an HTTP-only cookie
+    res.cookie("jwtToken", jwtToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "Strict",
+      maxAge: 3600000, // 1 hour
+    });
+
+    // Set the refresh token as an HTTP-only cookie
+    res.cookie("refreshToken", refreshToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    });
+
+    // Send the access token in the response body
     res.status(200).json({
       message: "Login successful",
       jwtToken,
-      refreshToken,
     });
   } catch (err) {
     console.error("Error logging in user:", err);
     res.status(500).json({ error: "An error occurred while logging in." });
+  }
+};
+
+// Logout function
+export const logout = async (req, res) => {
+  try {
+    res.clearCookie("jwtToken", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+    });
+
+    res.clearCookie("refreshToken", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+    });
+
+    // Log the logout action with a timestamp
+    console.log(`User logged out at ${new Date().toISOString()}`);
+
+    // Send a response back
+    res.status(200).json({ message: "Logged out successfully" });
+  } catch (error) {
+    console.error("Logout error:", error);
+    res.status(500).json({ message: "Failed to log out" });
   }
 };

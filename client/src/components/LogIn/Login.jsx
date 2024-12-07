@@ -1,6 +1,7 @@
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./LoginStyles.module.css";
 import usernameIcon from "../../assets/username_icon.png";
 import passwordIcon from "../../assets/password_icon.png";
@@ -16,7 +17,48 @@ const Login = () => {
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
 
-  // Login function
+  // Function to refresh the access token
+  const refreshToken = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/auth/refresh-token",
+        {},
+        { withCredentials: true }
+      );
+    } catch (err) {
+      console.error("Error refreshing token:", err);
+      // Handle error (maybe redirect to login)
+      alert("Unable to refresh token. Please log in again.");
+      navigate("/log-in");
+    }
+  };
+
+  // Function to check if the token is expired
+  const isTokenExpired = () => {
+    // Send a request to the server to check the token's expiration
+    axios
+      .post(
+        "http://localhost:3000/api/auth/check-token-expiration",
+        {},
+        { withCredentials: true }
+      )
+      .then((response) => {
+        if (response.data.tokenExpired) {
+          refreshToken(); // If the token is expired, refresh it
+        }
+      })
+      .catch((err) => {
+        console.error("Error checking token expiration:", err);
+        navigate("/log-in");
+      });
+  };
+
+  // Check token expiration on page reload
+  useEffect(() => {
+    isTokenExpired();
+  }, []);
+
+  // Login handler function
   const handleLogin = async (e) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     console.log("HandleLogin function triggered");
@@ -44,19 +86,13 @@ const Login = () => {
     try {
       const response = await axios.post(
         "http://localhost:3000/api/auth/log-in",
-        {
-          email,
-          password,
-        }
+        { email, password },
+        { withCredentials: true } // Ensure cookies are sent/received
       );
 
       // Success message or actions
       console.log("Login successful:", response.data);
       alert("Login successful!");
-
-      // Store JWT token and refresh token in localStorage
-      localStorage.setItem("jwtToken", response.data.jwtToken);
-      localStorage.setItem("refreshToken", response.data.refreshToken);
 
       // Use useNavigate for redirecting without page reload
       navigate("/auction-house");
