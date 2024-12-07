@@ -4,14 +4,26 @@ import verifyToken from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-// Public route
+// Public routes
 router.post("/register", register);
 router.post("/log-in", login);
+router.post("/log-out", (req, res) => {
+  // Clear the refresh token cookie
+  res.clearCookie("refreshToken", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "strict",
+  });
 
-// Protected route
+  res.status(200).send("Logged out successfully");
+});
+
+// Protected routes
 router.get("/profile", verifyToken, (req, res) => {
-  // The route is protected, so the user must be authenticated
   res.send("User profile data");
+});
+router.get("/auction-house", verifyToken, (req, res) => {
+  res.send("Auction house page");
 });
 
 export default router;

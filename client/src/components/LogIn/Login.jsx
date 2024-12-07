@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styles from "./LoginStyles.module.css";
 import usernameIcon from "../../assets/username_icon.png";
@@ -7,6 +8,7 @@ import logInImg from "../../assets/log_in_img.png";
 import SignUp from "../SignUp/SignUp";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [isCreateVisible, setIsCreateVisible] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -49,24 +51,24 @@ const Login = () => {
       );
 
       // Success message or actions
-      alert("Login successful!");
       console.log("Login successful:", response.data);
+      alert("Login successful!");
 
-      // Example: Save token to localStorage and redirect
-      localStorage.setItem("token", response.data.token);
-      window.location.href = "/auction-house"; // Redirect to the main page
+      // Store JWT token and refresh token in localStorage
+      localStorage.setItem("jwtToken", response.data.jwtToken);
+      localStorage.setItem("refreshToken", response.data.refreshToken);
+
+      // Use useNavigate for redirecting without page reload
+      navigate("/auction-house");
     } catch (err) {
-      // Handle specific error responses from the server
+      // Error handling
       if (err.response) {
-        console.error("Server responded with error:", err.response.data);
-        alert(
-          err.response.data.error || "An error occurred. Please try again."
-        );
+        console.error("Server error:", err.response.data);
+        alert(err.response.data.error || "Login failed. Please try again.");
       } else if (err.request) {
-        console.error("No response received:", err.request);
+        console.error("Network error:", err.request);
         alert("Unable to connect to the server. Please check your network.");
       } else {
-        console.error("Server responded with:", err.response);
         console.error("Unexpected error:", err.message);
         alert("An unexpected error occurred. Please try again later.");
       }

@@ -31,6 +31,14 @@ export const login = async (req, res) => {
   const { email, password } = req.body;
 
   // Input validation
+  if (!email || email.trim().length === 0) {
+    return res.status(400).json({ error: "Email is required" });
+  }
+
+  if (!password || password.trim().length === 0) {
+    return res.status(400).json({ error: "Password is required" });
+  }
+
   if (!email || !password) {
     return res.status(400).json({ error: "Email and password are required" });
   }
@@ -62,7 +70,7 @@ export const login = async (req, res) => {
     }
 
     // Generate JWT token
-    const token = jwt.sign(
+    const jwtToken = jwt.sign(
       { id: user.user_id, email: user.email, role: user.role },
       process.env.JWT_SECRET,
       { expiresIn: "1h" }
@@ -77,7 +85,7 @@ export const login = async (req, res) => {
 
     res.status(200).json({
       message: "Login successful",
-      token,
+      jwtToken,
       refreshToken,
     });
   } catch (err) {

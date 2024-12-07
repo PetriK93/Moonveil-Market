@@ -7,8 +7,16 @@ import cors from "cors";
 // Load environment variables from .env file
 config();
 
+// Initializes an express application instance
 const app = express();
-app.use(cors());
+
+// Middleware that allows cross origin resource sharing
+app.use(
+  cors({
+    origin: "http://localhost:5173", // Allow your frontend origin
+    credentials: true, // Allow cookies to be sent
+  })
+);
 
 // Middleware to parse JSON requests
 app.use(express.json());
@@ -16,7 +24,7 @@ app.use(express.json());
 // Database connection
 const startServer = async () => {
   try {
-    const connection = await connectToDatabase();
+    await connectToDatabase();
     console.log("Successfully connected to the database");
 
     // Define routes
