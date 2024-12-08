@@ -1,5 +1,4 @@
 import axios from "axios";
-import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import styles from "./LoginStyles.module.css";
@@ -34,23 +33,21 @@ const Login = () => {
   };
 
   // Function to check if the token is expired
-  const isTokenExpired = () => {
-    // Send a request to the server to check the token's expiration
-    axios
-      .post(
+  const isTokenExpired = async () => {
+    try {
+      const response = await axios.post(
         "http://localhost:3000/api/auth/check-token-expiration",
         {},
         { withCredentials: true }
-      )
-      .then((response) => {
-        if (response.data.tokenExpired) {
-          refreshToken(); // If the token is expired, refresh it
-        }
-      })
-      .catch((err) => {
-        console.error("Error checking token expiration:", err);
-        navigate("/log-in");
-      });
+      );
+      // Check if the token is expired from the response
+      if (response.data.tokenExpired) {
+        refreshToken();
+      }
+    } catch (err) {
+      console.error("Error checking token expiration:", err);
+      navigate("/log-in");
+    }
   };
 
   // Check token expiration on page reload

@@ -1,24 +1,31 @@
 import jwt from "jsonwebtoken";
 
-const checkTokenExpiration = (req, res) => {
+const checkTokenExpiration = (req, res, next) => {
   try {
-    const token = req.cookies.jwt; // Retrieve the token from HttpOnly cookie
+    const token = req.cookies.jwtToken;
 
     if (!token) {
       return res.status(401).json({ error: "No token provided" });
     }
 
-    // Decode and verify token (using jwt-decode or directly using jwt.verify)
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const currentTime = Date.now() / 1000;
+    // Verify token
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+      if (err) {
+        if (err.name === "TokenExpiredError") {
+          return res.status(401).json({ tokenExpired: true }); // Token is expired
+        }
+        return res.status(401).json({ error: "Invalid token" });
+      }
 
-    if (decoded.exp < currentTime) {
-      return res.status(200).json({ tokenExpired: true }); // If expired
-    }
+      // If token is valid
+      return res.status(200).json({ tokenExpired: false });
+    });
 
-    return res.status(200).json({ tokenExpired: false }); // If valid
+    next();
   } catch (error) {
-    return res.status(401).json({ error: "Invalid or expired token" });
+    return res
+      .status(401)
+      .json({ error: "An error occurred during token validation" });
   }
 };
 
