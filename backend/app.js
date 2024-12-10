@@ -3,12 +3,16 @@ import connectToDatabase from "./db.js";
 import authRoutes from "./routes/authRoutes.js";
 import { config } from "dotenv";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 
 // Load environment variables from .env file
 config();
 
 // Initializes an express application instance
 const app = express();
+
+// Use cookie-parser middleware
+app.use(cookieParser());
 
 // Middleware that allows cross origin resource sharing
 app.use(

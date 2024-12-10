@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styles from "./LoginStyles.module.css";
 import usernameIcon from "../../assets/username_icon.png";
 import passwordIcon from "../../assets/password_icon.png";
@@ -16,45 +16,6 @@ const Login = () => {
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
 
-  // Function to refresh the access token
-  const refreshToken = async () => {
-    try {
-      const response = await axios.post(
-        "http://localhost:3000/api/auth/refresh-token",
-        {},
-        { withCredentials: true }
-      );
-    } catch (err) {
-      console.error("Error refreshing token:", err);
-      // Handle error (maybe redirect to login)
-      alert("Unable to refresh token. Please log in again.");
-      navigate("/log-in");
-    }
-  };
-
-  // Function to check if the token is expired
-  const isTokenExpired = async () => {
-    try {
-      const response = await axios.post(
-        "http://localhost:3000/api/auth/check-token-expiration",
-        {},
-        { withCredentials: true }
-      );
-      // Check if the token is expired from the response
-      if (response.data.tokenExpired) {
-        refreshToken();
-      }
-    } catch (err) {
-      console.error("Error checking token expiration:", err);
-      navigate("/log-in");
-    }
-  };
-
-  // Check token expiration on page reload
-  useEffect(() => {
-    isTokenExpired();
-  }, []);
-
   // Login handler function
   const handleLogin = async (e) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -65,11 +26,6 @@ const Login = () => {
     console.log("Password:", password);
 
     // Input validation section
-    if (!email || email.trim().length === 0) {
-      alert("Please enter your email.");
-      return;
-    }
-
     if (!email || !emailRegex.test(email)) {
       alert("Please enter a valid email address.");
       return;
@@ -89,7 +45,7 @@ const Login = () => {
 
       // Success message or actions
       console.log("Login successful:", response.data);
-      alert("Login successful!");
+      alert(response.data.message);
 
       // Use useNavigate for redirecting without page reload
       navigate("/auction-house");

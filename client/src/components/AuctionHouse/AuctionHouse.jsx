@@ -31,6 +31,7 @@ import treeRoots1 from "../../assets/Crafting_materials/2.png";
 import skull1 from "../../assets/Crafting_materials/6.png";
 import AuctionRow from "./AuctionRow";
 import MyAuctionRow from "./MyAuctionRow";
+import useAuthCheck from "../../helpers/useAuthCheck";
 
 const Home = () => {
   // useStates & UseRefs
@@ -55,7 +56,13 @@ const Home = () => {
   const [copperBuyout, setCopperBuyout] = useState("");
   const [isDragging, setIsDragging] = useState(false);
 
-  // Prevents scrolling the page itself when inside the categorySection
+  // Check cookie validity
+  const { checkAuth } = useAuthCheck();
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth]);
+
+  // Prevents scrolling the page itself when the cursor is inside the categorySection
   useEffect(() => {
     const categorySection = categorySectionRef.current;
     const browseSection = browseSectionRef.current;

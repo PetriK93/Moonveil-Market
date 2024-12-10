@@ -99,9 +99,12 @@ export const login = async (req, res) => {
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 
+    // Log the logout action with a timestamp
+    console.log(`User logged in at ${new Date().toISOString()}`);
+
     // Send the access token in the response body
     res.status(200).json({
-      message: "Login successful",
+      message: "Login successful!",
       jwtToken,
     });
   } catch (err) {

@@ -8,22 +8,6 @@ const NavBar = () => {
 
   const handleLogout = async () => {
     try {
-      // Log current tokens
-      console.log("Before logout:", {
-        jwtToken: localStorage.getItem("jwtToken"),
-        refreshToken: localStorage.getItem("refreshToken"),
-      });
-
-      // Optional: If your tokens are stored in cookies or localStorage, remove them
-      localStorage.removeItem("jwtToken");
-      localStorage.removeItem("refreshToken");
-
-      // Log after removing tokens
-      console.log("After logout:", {
-        jwtToken: localStorage.getItem("jwtToken"),
-        refreshToken: localStorage.getItem("refreshToken"),
-      });
-
       // If using cookies, clear them with an API call to the backend
       await fetch("http://localhost:3000/api/auth/log-out", {
         method: "POST",
