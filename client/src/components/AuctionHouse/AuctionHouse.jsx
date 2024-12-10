@@ -31,7 +31,7 @@ import treeRoots1 from "../../assets/Crafting_materials/2.png";
 import skull1 from "../../assets/Crafting_materials/6.png";
 import AuctionRow from "./AuctionRow";
 import MyAuctionRow from "./MyAuctionRow";
-import useAuthCheck from "../../helpers/useAuthCheck";
+import authCheckAuctionHouse from "../../helpers/authCheckAuctionHouse";
 
 const Home = () => {
   // useStates & UseRefs
@@ -57,7 +57,7 @@ const Home = () => {
   const [isDragging, setIsDragging] = useState(false);
 
   // Check cookie validity
-  const { checkAuth } = useAuthCheck();
+  const { checkAuth } = authCheckAuctionHouse();
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);

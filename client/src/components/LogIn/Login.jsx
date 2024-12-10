@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./LoginStyles.module.css";
 import usernameIcon from "../../assets/username_icon.png";
 import passwordIcon from "../../assets/password_icon.png";
 import logInImg from "../../assets/log_in_img.png";
 import SignUp from "../SignUp/SignUp";
+import authCheckLogin from "../../helpers/authCheckLogin";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -15,6 +16,12 @@ const Login = () => {
 
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
+
+  // Check cookie validity
+  const { checkAuth } = authCheckLogin();
+  useEffect(() => {
+    checkAuth();
+  }, []);
 
   // Login handler function
   const handleLogin = async (e) => {
@@ -64,6 +71,13 @@ const Login = () => {
     }
   };
 
+  // Calls the login function when you press enter inside the input fields
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleLogin();
+    }
+  };
+
   const handleOpen = () => {
     console.log("Opening Sign Up");
     setIsCreateVisible(true);
@@ -87,6 +101,7 @@ const Login = () => {
               placeholder="Email"
               value={email}
               onChange={handleEmailChange}
+              onKeyDown={handleKeyPress}
               autoCorrect="off"
               autoCapitalize="off"
               spellCheck="false"
@@ -100,6 +115,7 @@ const Login = () => {
               placeholder="Password"
               value={password}
               onChange={handlePasswordChange}
+              onKeyDown={handleKeyPress}
               autoCorrect="off"
               autoCapitalize="off"
               spellCheck="false"

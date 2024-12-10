@@ -1,40 +1,34 @@
 .container {
   width: 100vw;
-  height: auto;
+  height: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border-bottom: 1px solid lightgrey;
+  margin-bottom: 0px;
 }
 
-img {
+.navBarLogoLogin {
   width: 300px;
   height: auto;
   max-width: 496px;
-  margin-top: 0px;
+  padding: 0;
+  margin-top: 0;
+  margin-left: -383px;
+}
+
+.navBarLogoLogout {
+  width: 300px;
   height: auto;
+  padding: 0;
+  max-width: 496px;
+  margin-top: 0px;
 }
 
 .imageWrapper {
   position: relative;
   display: inline-block;
-}
-
-.imageWrapper::after {
-  content: "";
-  position: absolute;
-  margin-bottom: -15px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 2px;
-  background-color: var(--brown-color);
-  transform: scaleX(0);
-  transition: transform 0.3s;
-}
-
-.imageWrapper:hover::after {
-  transform: scaleX(1);
 }
 
 nav {
@@ -56,14 +50,14 @@ nav ul li {
   position: relative;
   margin: 0 1rem;
   margin-top: 38px;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   cursor: pointer;
 }
 
 nav ul li::after {
   content: "";
   position: absolute;
-  margin-bottom: -6px;
+  margin-bottom: -13px;
   left: 0;
   right: 0;
   bottom: -50px;
@@ -79,14 +73,6 @@ nav ul li:hover::after {
 
 a {
   text-decoration: none;
-}
-
-hr {
-  border: none;
-  height: 1px;
-  background-color: lightgrey;
-  width: 100vw;
-  margin-top: 5px;
 }
 
 h1 {

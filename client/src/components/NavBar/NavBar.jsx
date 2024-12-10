@@ -1,9 +1,10 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import brandLogo from "../../assets/brand_logo_1.png";
 import styles from "./NavBarStyles.module.css";
 
 const NavBar = () => {
+  const location = useLocation();
+  const isLoginPage = location.pathname === "/log-in";
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -25,19 +26,31 @@ const NavBar = () => {
     <div className={styles.container}>
       <header>
         <nav id="navbar">
-          <Link to="/auction-house">
-            <div className={styles.imageWrapper}>
-              <img src={brandLogo} alt="Brand logo" />
-            </div>
-          </Link>
+          <div
+            className={`${styles.imageWrapper} ${
+              isLoginPage ? styles.imageWrapperLogin : styles.imageWrapperLogout
+            }`}
+          >
+            <img
+              className={
+                isLoginPage ? styles.navBarLogoLogin : styles.navBarLogoLogout
+              }
+              src={brandLogo}
+              alt="Brand logo"
+            />
+          </div>
           <ul>
-            <li>
-              <Link to="/auction-house">Auction House</Link>
-            </li>
-            <li>
-              <Link to="/my-profile">Profile</Link>
-            </li>
-            <li onClick={handleLogout}>Log Out</li>
+            {!isLoginPage && (
+              <>
+                <li>
+                  <Link to="/auction-house">Auction House</Link>
+                </li>
+                <li>
+                  <Link to="/my-profile">Profile</Link>
+                </li>
+                <li onClick={handleLogout}>Log Out</li>
+              </>
+            )}
           </ul>
         </nav>
       </header>
