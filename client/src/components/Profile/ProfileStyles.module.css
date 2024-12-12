@@ -1,0 +1,80 @@
+.container {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  margin-top: 50px;
+}
+
+.outerCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #373b44, #4286f4);
+  width: 800px;
+  height: 500px;
+  border-radius: 25px;
+  border: 2px solid black;
+}
+
+.innerCard {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 49%;
+  width: 96%;
+  height: 68%;
+  background: #36454f;
+  background: linear-gradient(to right, #36454f, #6b7a8f);
+  border-radius: 15px;
+  margin-top: 0%;
+  border: 2px solid black;
+}
+
+.portrait {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  top: 50%;
+  left: 3%;
+  transform: translateY(-50%);
+  background: linear-gradient(to right, #2c3e50, #4ca1af);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  border: 2px solid black;
+  border-radius: 15px;
+}
+
+.profileTitle {
+  font-size: 2rem;
+  color: gold;
+  background: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+}
+
+.profileInfo h2,
+.profileInfo h3 {
+  background: transparent;
+  color: gold;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.profileInfo h2 {
+  font-size: 1.9rem;
+}
+
+.profileInfo h3 {
+  font-size: 1.3rem;
+}

@@ -252,7 +252,7 @@ const Home = () => {
                 autoComplete="off"
                 spellCheck="false"
                 onChange={(e) => setName(e.target.value)}
-                placeholder="Name"
+                placeholder="Item Name"
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setIsFocused(false)}
               />

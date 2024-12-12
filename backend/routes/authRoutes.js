@@ -4,7 +4,7 @@ import validateTokens from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-// Public POST routes
+// Public routes
 router.post("/register", register);
 router.post("/log-in", login);
 router.post("/log-out", logout);
