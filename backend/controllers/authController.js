@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 
 // Register function
 export const register = async (req, res) => {
-  const { email, username, password } = req.body;
+  const { email, username, password, heroType } = req.body;
 
   try {
     const pool = await connectToDatabase();
@@ -13,8 +13,8 @@ export const register = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     await pool.execute(
-      "INSERT INTO users (email, username, password) VALUES (?, ?, ?)",
-      [email, username, hashedPassword]
+      "INSERT INTO users (email, username, password, hero_type) VALUES (?, ?, ?, ?)",
+      [email, username, hashedPassword, heroType]
     );
 
     res.status(201).json({ message: "User registered successfully" });
@@ -71,14 +71,24 @@ export const login = async (req, res) => {
 
     // Generate JWT token
     const jwtToken = jwt.sign(
-      { id: user.user_id, email: user.email, role: user.role },
+      {
+        id: user.user_id,
+        email: user.email,
+        role: user.role,
+        heroType: user.heroType,
+      },
       process.env.JWT_SECRET,
-      { expiresIn: "1h" }
+      { expiresIn: "15m" }
     );
 
     // Generate a refresh token
     const refreshToken = jwt.sign(
-      { id: user.user_id, email: user.email, role: user.role },
+      {
+        id: user.user_id,
+        email: user.email,
+        role: user.role,
+        heroType: user.heroType,
+      },
       process.env.JWT_REFRESH_SECRET,
       { expiresIn: "7d" }
     );
@@ -88,7 +98,7 @@ export const login = async (req, res) => {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "Strict",
-      maxAge: 3600000, // 1 hour
+      maxAge: 900000, // 15 minutes
     });
 
     // Set the refresh token as an HTTP-only cookie

@@ -1,7 +1,15 @@
+import { useEffect } from "react";
 import styles from "./ProfileStyles.module.css";
 import portrait from "../../assets/swordsman_portrait2.png";
+import authCheckContent from "../../helpers/authCheckContent";
 
 const Profile = () => {
+  // Check cookie validity
+  const { checkAuth } = authCheckContent();
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth]);
+
   return (
     <div className={styles.container}>
       <div className={styles.outerCard}>

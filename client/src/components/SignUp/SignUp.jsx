@@ -14,6 +14,7 @@ const SignUp = ({ onClose }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
+  const [heroType, setHeroType] = useState("");
 
   const passwordIcon = isPasswordVisible ? showIcon : hideIcon;
   const confirmPasswordIcon = isConfirmPasswordVisible ? showIcon : hideIcon;
@@ -22,6 +23,7 @@ const SignUp = ({ onClose }) => {
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
   const handleConfirmPasswordChange = (e) => setConfirmPassword(e.target.value);
+  const handleHeroTypeChange = (e) => setHeroType(e.target.value);
 
   const isPasswordMatch = password === confirmPassword;
 
@@ -34,6 +36,7 @@ const SignUp = ({ onClose }) => {
     console.log("Password:", password);
     console.log("Confirm Password:", confirmPassword);
     console.log("Is Password Match:", isPasswordMatch);
+    console.log("Selected Hero Type:", heroType);
 
     // Input validation section
     if (!emailRegex.test(email)) {
@@ -59,7 +62,7 @@ const SignUp = ({ onClose }) => {
     try {
       const response = await axios.post(
         "http://localhost:3000/api/auth/register",
-        { email, username, password }
+        { email, username, password, heroType }
       );
       console.log("Registration successful:", response.data);
       onClose();
@@ -143,6 +146,21 @@ const SignUp = ({ onClose }) => {
               onClick={() => setIsConfirmPasswordVisible((prev) => !prev)}
             />
           </div>
+          <select value={heroType} onChange={handleHeroTypeChange} required>
+            <option value="">Select Hero Type</option>
+            <option value="warrior">Warrior</option>
+            <option value="mage">Mage</option>
+            <option value="archer">Archer</option>
+            <option value="druid">Druid</option>
+            <option value="barbarian">Barbarian</option>
+            <option value="gunman">Gunman</option>
+            <option value="ninja">Ninja</option>
+            <option value="martial artist">Martial Artist</option>
+            <option value="priest">Priest</option>
+            <option value="thief">Thief</option>
+            <option value="samurai">Samurai</option>
+            <option value="lancer">Lancer</option>
+          </select>
         </div>
         <button
           className={styles.createAccountButton}
