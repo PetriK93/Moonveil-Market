@@ -146,7 +146,33 @@ const SignUp = ({ onClose }) => {
               onClick={() => setIsConfirmPasswordVisible((prev) => !prev)}
             />
           </div>
-          <select value={heroType} onChange={handleHeroTypeChange} required>
+          <div className={styles.dropdown}>
+            <button className={styles.dropdownHeader}>
+              <span class="dropdownSelected">Select hero type</span>
+              <span class="dropdownArrow"> ▼</span>
+            </button>
+            <ul class="dropdownMenu">
+              <li class="dropdownItem">Warrior</li>
+              <li class="dropdownItem">Mage</li>
+              <li class="dropdownItem">Archer</li>
+              <li class="dropdownItem">Druid</li>
+              <li class="dropdownItem">Barbarian</li>
+              <li class="dropdownItem">Gunman</li>
+              <li class="dropdownItem">Ninja</li>
+              <li class="dropdownItem">Martial artist</li>
+              <li class="dropdownItem">Priest</li>
+              <li class="dropdownItem">Thief</li>
+              <li class="dropdownItem">Samurai</li>
+              <li class="dropdownItem">Lancer</li>
+            </ul>
+          </div>
+
+          {/*<select
+            className={styles.selectHeroType}
+           value={heroType} 
+           onChange={handleHeroTypeChange} 
+           required
+           >
             <option value="">Select Hero Type</option>
             <option value="warrior">Warrior</option>
             <option value="mage">Mage</option>
@@ -160,7 +186,7 @@ const SignUp = ({ onClose }) => {
             <option value="thief">Thief</option>
             <option value="samurai">Samurai</option>
             <option value="lancer">Lancer</option>
-          </select>
+        </select>*/}
         </div>
         <button
           className={styles.createAccountButton}
