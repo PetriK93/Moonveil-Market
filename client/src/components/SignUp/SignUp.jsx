@@ -1,12 +1,13 @@
 import axios from "axios";
 import styles from "./SignUpStyles.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import showIcon from "../../assets/show_icon.png";
 import hideIcon from "../../assets/hide_icon.png";
 import createProfileIcon from "../../assets/create_profile_icon.png";
 import closeIcon from "../../assets/close_icon.png";
 
 const SignUp = ({ onClose }) => {
+  // useStates
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
     useState(false);
@@ -15,17 +16,34 @@ const SignUp = ({ onClose }) => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [heroType, setHeroType] = useState("");
+  const [dropdownIsOpen, setDropdownIsOpen] = useState(false);
 
   const passwordIcon = isPasswordVisible ? showIcon : hideIcon;
   const confirmPasswordIcon = isConfirmPasswordVisible ? showIcon : hideIcon;
+  const isPasswordMatch = password === confirmPassword;
 
+  // State setter functions
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
   const handleConfirmPasswordChange = (e) => setConfirmPassword(e.target.value);
-  const handleHeroTypeChange = (e) => setHeroType(e.target.value);
 
-  const isPasswordMatch = password === confirmPassword;
+  // Open or close the dropdown menu
+  const handleDropdown = () => {
+    setDropdownIsOpen((prev) => !prev);
+  };
+
+  // Function to handle heroType
+  const handleHeroType = (e) => {
+    const value = e.target.getAttribute("data-value");
+    setHeroType(value);
+    setDropdownIsOpen((prev) => !prev);
+  };
+
+  // Log out the heroType when the value changes
+  useEffect(() => {
+    console.log("Updated heroType:", heroType);
+  }, [heroType]);
 
   // Function to handle form submission
   const handleSubmit = async (e) => {
@@ -147,46 +165,113 @@ const SignUp = ({ onClose }) => {
             />
           </div>
           <div className={styles.dropdown}>
-            <button className={styles.dropdownHeader}>
-              <span class="dropdownSelected">Select hero type</span>
-              <span class="dropdownArrow"> ▼</span>
+            <button className={styles.dropdownHeader} onClick={handleDropdown}>
+              <span className={styles.dropdownSelected}>
+                {heroType
+                  ? heroType.charAt(0).toUpperCase() + heroType.slice(1)
+                  : "Select hero type"}
+              </span>
+              <span
+                className={`${styles.dropdownArrow} ${
+                  dropdownIsOpen ? styles.arrowRotated : ""
+                }`}
+              >
+                ▼
+              </span>
             </button>
-            <ul class="dropdownMenu">
-              <li class="dropdownItem">Warrior</li>
-              <li class="dropdownItem">Mage</li>
-              <li class="dropdownItem">Archer</li>
-              <li class="dropdownItem">Druid</li>
-              <li class="dropdownItem">Barbarian</li>
-              <li class="dropdownItem">Gunman</li>
-              <li class="dropdownItem">Ninja</li>
-              <li class="dropdownItem">Martial artist</li>
-              <li class="dropdownItem">Priest</li>
-              <li class="dropdownItem">Thief</li>
-              <li class="dropdownItem">Samurai</li>
-              <li class="dropdownItem">Lancer</li>
+            <ul
+              className={
+                dropdownIsOpen
+                  ? `${styles.dropdownMenu} ${styles.dropdownMenuOpen}`
+                  : styles.dropdownMenu
+              }
+            >
+              <li
+                className={styles.dropdownItem}
+                data-value="warrior"
+                onClick={handleHeroType}
+              >
+                Warrior
+              </li>
+              <li
+                className={styles.dropdownItem}
+                data-value="mage"
+                onClick={handleHeroType}
+              >
+                Mage
+              </li>
+              <li
+                className={styles.dropdownItem}
+                data-value="archer"
+                onClick={handleHeroType}
+              >
+                Archer
+              </li>
+              <li
+                className={styles.dropdownItem}
+                data-value="druid"
+                onClick={handleHeroType}
+              >
+                Druid
+              </li>
+              <li
+                className={styles.dropdownItem}
+                data-value="barbarian"
+                onClick={handleHeroType}
+              >
+                Barbarian
+              </li>
+              <li
+                className={styles.dropdownItem}
+                data-value="gunman"
+                onClick={handleHeroType}
+              >
+                Gunman
+              </li>
+              <li
+                className={styles.dropdownItem}
+                data-value="ninja"
+                onClick={handleHeroType}
+              >
+                Ninja
+              </li>
+              <li
+                className={styles.dropdownItem}
+                data-value="martial artist"
+                onClick={handleHeroType}
+              >
+                Martial artist
+              </li>
+              <li
+                className={styles.dropdownItem}
+                data-value="priest"
+                onClick={handleHeroType}
+              >
+                Priest
+              </li>
+              <li
+                className={styles.dropdownItem}
+                data-value="thief"
+                onClick={handleHeroType}
+              >
+                Thief
+              </li>
+              <li
+                className={styles.dropdownItem}
+                data-value="samurai"
+                onClick={handleHeroType}
+              >
+                Samurai
+              </li>
+              <li
+                className={styles.dropdownItem}
+                data-value="lancer"
+                onClick={handleHeroType}
+              >
+                Lancer
+              </li>
             </ul>
           </div>
-
-          {/*<select
-            className={styles.selectHeroType}
-           value={heroType} 
-           onChange={handleHeroTypeChange} 
-           required
-           >
-            <option value="">Select Hero Type</option>
-            <option value="warrior">Warrior</option>
-            <option value="mage">Mage</option>
-            <option value="archer">Archer</option>
-            <option value="druid">Druid</option>
-            <option value="barbarian">Barbarian</option>
-            <option value="gunman">Gunman</option>
-            <option value="ninja">Ninja</option>
-            <option value="martial artist">Martial Artist</option>
-            <option value="priest">Priest</option>
-            <option value="thief">Thief</option>
-            <option value="samurai">Samurai</option>
-            <option value="lancer">Lancer</option>
-        </select>*/}
         </div>
         <button
           className={styles.createAccountButton}
