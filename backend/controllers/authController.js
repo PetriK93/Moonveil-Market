@@ -75,7 +75,6 @@ export const login = async (req, res) => {
         id: user.user_id,
         email: user.email,
         role: user.role,
-        heroType: user.heroType,
       },
       process.env.JWT_SECRET,
       { expiresIn: "15m" }
@@ -87,7 +86,6 @@ export const login = async (req, res) => {
         id: user.user_id,
         email: user.email,
         role: user.role,
-        heroType: user.heroType,
       },
       process.env.JWT_REFRESH_SECRET,
       { expiresIn: "7d" }
@@ -146,5 +144,49 @@ export const logout = async (req, res) => {
   } catch (error) {
     console.error("Logout error:", error);
     res.status(500).json({ message: "Failed to log out" });
+  }
+};
+
+export const getProfileData = async (req, res) => {
+  try {
+    // Step 1: Extract the JWT token from the cookies
+    const token = req.cookies.jwtToken;
+
+    // Check if the token is present
+    if (!token) {
+      return res.status(401).json({ error: "No token provided" });
+    }
+
+    // Step 2: Verify and decode the JWT token
+    const decoded = jwt.verify(token, process.env.JWT_SECRET); // JWT_SECRET is your secret key
+
+    // Step 3: Extract email from the decoded token
+    const email = decoded.email;
+
+    // Step 4: Fetch the user data from the database using the email
+    const pool = await connectToDatabase();
+
+    const [rows] = await pool.execute("SELECT * FROM users WHERE email = ?", [
+      email,
+    ]);
+
+    if (rows.length === 0) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    const user = rows[0];
+
+    // Step 5: Send the profile data as a response
+    const userData = {
+      username: user.username,
+      heroType: user.hero_type,
+      characterLevel: user.character_level,
+      birthday: user.created_at,
+    };
+
+    res.status(200).json({ userData });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Internal server error" });
   }
 };

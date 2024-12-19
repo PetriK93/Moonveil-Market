@@ -1,5 +1,10 @@
 import express from "express";
-import { register, login, logout } from "../controllers/authController.js";
+import {
+  register,
+  login,
+  logout,
+  getProfileData,
+} from "../controllers/authController.js";
 import validateTokens from "../middleware/authMiddleware.js";
 
 const router = express.Router();
@@ -16,5 +21,6 @@ router.get("/validate", validateTokens, (req, res) => {
 router.get("/my-profile", validateTokens, (req, res) => {
   res.json({ valid: true, user: req.user });
 });
+router.get("/profile-data", getProfileData);
 
 export default router;

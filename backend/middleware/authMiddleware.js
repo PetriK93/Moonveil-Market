@@ -20,7 +20,6 @@ const generateJwtToken = (user) => {
       id: user.user_id,
       email: user.email,
       role: user.role,
-      heroType: user.heroType,
     },
     process.env.JWT_SECRET,
     { expiresIn: "15m" }
@@ -33,7 +32,6 @@ const generateRefreshToken = (user) => {
       id: user.user_id,
       email: user.email,
       role: user.role,
-      heroType: user.heroType,
     },
     process.env.JWT_REFRESH_SECRET,
     { expiresIn: "7d" }
